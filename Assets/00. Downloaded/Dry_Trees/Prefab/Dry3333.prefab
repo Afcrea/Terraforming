@@ -357,6 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6357215127638003843}
   - component: {fileID: 3408194372687991264}
+  - component: {fileID: 9198501806901188956}
   m_Layer: 0
   m_Name: Dry3333
   m_TagString: Untagged
@@ -414,3 +415,15 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5357064223515413838}
   m_Enabled: 1
+--- !u!114 &9198501806901188956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013024405325220409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647ffb1cfdc8e5a41a622a3ddca62bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

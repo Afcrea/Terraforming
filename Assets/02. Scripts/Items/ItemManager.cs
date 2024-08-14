@@ -31,7 +31,7 @@ public class ItemManager : MonoBehaviour
         get { return seedlingCount; }
         set { seedlingCount = value; }
     }
-    public int Seed
+    public int SeedCount
     {
         get { return seedCount; }
         set { seedCount = value; }
@@ -43,5 +43,14 @@ public class ItemManager : MonoBehaviour
     }
 
     //≮ 功格栏肺 唱公 犁积己
+    public void TreeRespawn()
+    {
+
+    }
+
     //≮ 揪狙栏肺 钱 犁积己
+    public void GrassRespawn()
+    {
+
+    }
 }
