@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
 
@@ -7,7 +9,9 @@ public class Tree : MonoBehaviour, IInteractable
 {
     private ItemManager itemManager;
 
-    private bool isGathering = false;   //채집 가능 여부 판별 변수 
+    private bool isGathering = true;   //채집 가능 여부 판별 변수
+
+    GameObject seedlingPrefab;  //묘목 오브젝트
 
     private void Awake()
     {
@@ -19,8 +23,14 @@ public class Tree : MonoBehaviour, IInteractable
         }
     }
 
+    private void Start()
+    {
+        seedlingPrefab = Resources.Load<GameObject>("Prefabs/Seedling");
+    }
+
     public void Interact()
     {
+        Debug.Log("인터렉트 실행");
         if (isGathering)
         {
             //채집 코루틴 실행
@@ -34,7 +44,8 @@ public class Tree : MonoBehaviour, IInteractable
         //묘목 1개 목재 3개 획득
         itemManager.WoodCount += 3;
 
-        //★ 묘목 아이템 드랍 구현
+        //묘목 아이템 드랍 구현
+        Instantiate(seedlingPrefab, this.transform.position, this.transform.rotation);
 
         //이 오브젝트 파괴
         Destroy(this.gameObject);
@@ -43,6 +54,6 @@ public class Tree : MonoBehaviour, IInteractable
     }
 
     //★ 성장
-    //단계에 따라 Mesh 변경?
-    //성장이 완료된 상태이면 isGathering => true로 변경
+    //단계에 따라 Mesh 변경? / 스케일 변경
+    //성장이 미완료된 상태일 때는 isGathering => false로 변경
 }
