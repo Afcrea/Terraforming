@@ -8,9 +8,7 @@ using UnityEngine.Rendering.UI;
 public class Tree : MonoBehaviour, IInteractable
 {
     private ItemManager itemManager;
-
-    private bool isGathering = true;   //채집 가능 여부 판별 변수
-
+    public bool isGathering = true;   //채집 가능 여부 판별 변수
     GameObject seedlingPrefab;  //묘목 오브젝트
 
     private void Awake()
@@ -30,7 +28,7 @@ public class Tree : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log("인터렉트 실행");
+        //Debug.Log("인터렉트 실행");
         if (isGathering)
         {
             //채집 코루틴 실행
@@ -54,6 +52,6 @@ public class Tree : MonoBehaviour, IInteractable
     }
 
     //★ 성장
-    //단계에 따라 Mesh 변경? / 스케일 변경
+    //단계에 따라 스케일 변경
     //성장이 미완료된 상태일 때는 isGathering => false로 변경
 }

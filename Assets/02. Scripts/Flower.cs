@@ -8,7 +8,7 @@ using static UnityEditor.Progress;
 public class Flower : MonoBehaviour, IInteractable
 {
     private ItemManager itemManager;
-    private bool isGathering = true;    //채집 가능 여부 판별 변수
+    public bool isGathering = true;    //채집 가능 여부 판별 변수
     GameObject seedPrefab;              //씨앗 오브젝트
     GameObject fruitPrefab;             //열매 오브젝트
 
