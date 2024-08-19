@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 647ffb1cfdc8e5a41a622a3ddca62bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGathering: 1
 --- !u!1 &6338893246452235304
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +342,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1785323795255223984, guid: 750f8f30b2708f64f86e0a9176d9d7dc, type: 3}
 --- !u!1 &8574932091125717141
