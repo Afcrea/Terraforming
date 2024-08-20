@@ -1,4 +1,4 @@
-using DigitalRuby.RainMaker;
+//using DigitalRuby.RainMaker;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,19 +52,19 @@ public class PlanetManager : MonoBehaviour
     }
 
     // 비 코루틴
-    private IEnumerator RainCo(RainScript _rain)
-    {
-        // 비 내리게 하기
-        _rain.gameObject.SetActive(true);
-        // 비 세기 랜덤으로 바꾸기
-        _rain.RainIntensity = Random.Range(0.5f, 1f);
+    //private IEnumerator RainCo(RainScript _rain)
+    //{
+    //    // 비 내리게 하기
+    //    _rain.gameObject.SetActive(true);
+    //    // 비 세기 랜덤으로 바꾸기
+    //    _rain.RainIntensity = Random.Range(0.5f, 1f);
 
-        // 랜덤 지속시간 동안 비내리게 하기
-        yield return new WaitForSeconds(Random.Range(300f, 600f));
+    //    // 랜덤 지속시간 동안 비내리게 하기
+    //    yield return new WaitForSeconds(Random.Range(300f, 600f));
 
-        // 비 지속시간이 끝나면 멈추게 하기
-        _rain.gameObject.SetActive(false);
-        // 비 내리기 false로 변경
-        isRain = false;
-    }
+    //    // 비 지속시간이 끝나면 멈추게 하기
+    //    _rain.gameObject.SetActive(false);
+    //    // 비 내리기 false로 변경
+    //    isRain = false;
+    //}
 }
