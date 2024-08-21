@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5046923472392013353}
   - component: {fileID: 5046923472385026507}
   - component: {fileID: 117584931431076918}
+  - component: {fileID: 7208942937372415680}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -68,6 +69,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGathering: 1
+--- !u!135 &7208942937372415680
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5046923472392313353}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.27
+  m_Center: {x: 0, y: 1.87, z: 0}
 --- !u!1 &5046923472392313355
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +93,6 @@ GameObject:
   - component: {fileID: 5046923472392013355}
   - component: {fileID: 5046923472395404811}
   - component: {fileID: 5046923472394306763}
-  - component: {fileID: 8399648288916523160}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -152,17 +165,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8399648288916523160
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5046923472392313355}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: c53e2ff4f6c79fa4c9721a1cbacf11ba, type: 3}
