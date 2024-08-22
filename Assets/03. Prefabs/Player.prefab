@@ -1964,6 +1964,8 @@ GameObject:
   - component: {fileID: 465312036255313394}
   - component: {fileID: 6213611378425142142}
   - component: {fileID: 7680169587489228558}
+  - component: {fileID: 394128350}
+  - component: {fileID: 394128358}
   m_Layer: 8
   m_Name: Player
   m_TagString: PLAYER
@@ -2066,7 +2068,7 @@ MonoBehaviour:
   GroundedRadius: 0.28
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 641
   CinemachineCameraTarget: {fileID: 2622056754052611673}
   TopClamp: 70
   BottomClamp: -30
@@ -2206,6 +2208,36 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &394128350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7680169587489228546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251869791e41a2e4f8d2ad3b3c6c386a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: fc2a722fcdd402648ae1acba86db9a2d, type: 3}
+--- !u!114 &394128358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7680169587489228546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb6254aef5c3c04c86891c768b95b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulidObjects:
+  - {fileID: 100000, guid: 2e84254e724026a4896499600487a750, type: 3}
+  - {fileID: 100000, guid: 1e38d79ff3b6e78458458f93c0a327db, type: 3}
+  mainCamera: {fileID: 0}
+  previewShader: {fileID: 2100000, guid: 8d5bc9352bb3bee45ae74825bc871eff, type: 2}
 --- !u!1 &7753300735833464273
 GameObject:
   m_ObjectHideFlags: 0
