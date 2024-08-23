@@ -12,7 +12,7 @@ public class Fruit : MonoBehaviour, IInteractable
     public void Interact()
     {
         itemManager.FruitCount++;
-        Debug.Log(this.name + " 개수 : " + itemManager.FruitCount);
+        //Debug.Log(this.name + " 개수 : " + itemManager.FruitCount);
         Destroy(this.gameObject);
     }
 

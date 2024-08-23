@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -99,4 +98,11 @@ public class ItemManager : MonoBehaviour
         go.GetComponent<Flower>().isGathering = false;
     }
 
+    //열매 먹기
+    public void EatFruit()
+    {
+        FruitCount--;
+
+        //★ 플레이어 포만감 +
+    }
 }

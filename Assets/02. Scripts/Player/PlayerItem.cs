@@ -47,11 +47,11 @@ public class PlayerItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IItem item = other.GetComponent<IItem>();
+        IInteractable item = other.GetComponent<IInteractable>();
 
         if (item != null)
         {
-            item.GetItem();
+            item.Interact();
         }
     }
 
