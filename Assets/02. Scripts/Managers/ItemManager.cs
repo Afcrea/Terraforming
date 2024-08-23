@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -97,4 +98,5 @@ public class ItemManager : MonoBehaviour
         go.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         go.GetComponent<Flower>().isGathering = false;
     }
+
 }
