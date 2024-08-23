@@ -1,29 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
-public class Seed : MonoBehaviour, IInteractable, IItem
+public class Seedling : MonoBehaviour, IInteractable
 {
     private ItemManager itemManager;
     private Transform playerTr;         //플레이어 위치 담아올 변수
     private float distance = 3f;        //자석 효과 시작할 플레이어와 오브젝트 사이 거리
     private float magnetSpeed = 0.2f;   //자석 효과 속도
 
-    //취득
-    public void GetItem()
-    {
-        itemManager.SeedCount++;
-        Debug.Log(this.name + " 개수 : " + itemManager.SeedCount);
-        Destroy(this.gameObject);
-    }
-
-    //심기
+    //아이템 얻기
     public void Interact()
     {
-        if (itemManager.SeedCount > 0)
-        {
-            itemManager.PlantFlower();
-        }
+        itemManager.SeedlingCount++;
+        //Debug.Log(this.name + " 개수 : " + itemManager.SeedlingCount);
+        Destroy(this.gameObject);
     }
 
     private void Awake()
