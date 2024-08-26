@@ -61,7 +61,7 @@ public class Buliding : MonoBehaviour
         if (bulidObjects.Count > currIndex)
             buildingPrefab = bulidObjects[currIndex];
 
-        if (currIndex != prevIndex)
+        if (build && currIndex != prevIndex)
         {
             BuildObjectChange();
         }
