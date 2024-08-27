@@ -24,6 +24,9 @@ public class Buliding : MonoBehaviour
     private GameObject previewObject;
     private Material originalShader;
 
+    private Material previewEnableShader;
+    private Material previewUnenableShader;
+
     int groundLayer;
     int defaultLayer;
     int previewLayer;
@@ -37,6 +40,9 @@ public class Buliding : MonoBehaviour
 
     int currIndex;
     int prevIndex;
+
+    bool buildEnableChange = false;
+    bool buildEnable = false;
 
     void Start()
     {
@@ -52,6 +58,27 @@ public class Buliding : MonoBehaviour
         buildingLayer = 1 << groundLayer | 1 << buildObjLayer;
 
         mainCamera = Camera.main;
+
+        previewEnableShader = Resources.Load<Material>("Materials/BuildingSystem/PreviewEnable");
+        previewUnenableShader = Resources.Load<Material>("Materials/BuildingSystem/PreviewUnenable");
+
+        if (previewEnableShader == null)
+        {
+            Debug.LogError("Failed to load material. Make sure the path is correct and the material is located in the Resources folder.");
+        }
+        else
+        {
+            Debug.Log("Material loaded successfully.");
+        }
+
+        if (previewUnenableShader == null)
+        {
+            Debug.LogError("Failed to load material. Make sure the path is correct and the material is located in the Resources folder.");
+        }
+        else
+        {
+            Debug.Log("Material loaded successfully.");
+        }
     }
 
     private void Update()
@@ -65,10 +92,36 @@ public class Buliding : MonoBehaviour
         {
             BuildObjectChange();
         }
-
         //print(currIndex);
+
+        if (previewObject)
+        {
+            buildEnable = previewObject.GetComponent<PreviewCollision>().prewviewEnable;
+
+            if (buildEnable)
+            {
+                previewShader = previewEnableShader;
+            }
+
+            else
+            {
+                previewShader = previewUnenableShader;
+            }
+
+            if (buildEnableChange != buildEnable)
+            {
+                BuildObjectChange();
+            }
+
+            buildEnableChange = buildEnable;
+            Debug.Log(buildEnableChange);
+            Debug.Log(buildEnable);
+        }
+
+        
     }
 
+    
     void BuildObjectChange()
     {
         if(previewObject) 
@@ -88,6 +141,7 @@ public class Buliding : MonoBehaviour
         originalShader = renderer.material;
         renderer.material = previewShader;
         previewObject.GetComponent<BoxCollider>().isTrigger = true;
+        previewObject.AddComponent<PreviewCollision>();
     }
 
     void OnBuliding()
