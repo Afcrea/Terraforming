@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -20,20 +21,27 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
-		public GameObject uIManager;
-        
+		public bool isCameraMove = true;
+
 #if ENABLE_INPUT_SYSTEM
-        public void OnMove(InputValue value)
+		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
 
 		public void OnLook(InputValue value)
 		{
-			if(cursorInputForLook)
+			if (isCameraMove)
 			{
-				LookInput(value.Get<Vector2>());
+				if (cursorInputForLook)
+				{
+					LookInput(value.Get<Vector2>());
+				}
 			}
+			else
+			{
+				LookInput(new Vector2(0, 0));
+            }
 		}
 
 		public void OnJump(InputValue value)
@@ -67,7 +75,7 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
-		
+
 		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
@@ -75,8 +83,7 @@ namespace StarterAssets
 
 		private void SetCursorState(bool newState)
 		{
-			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+			Cursor.lockState = newState ? CursorLockMode.None : CursorLockMode.None;
 		}
 	}
-	
 }
