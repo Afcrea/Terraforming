@@ -7,6 +7,7 @@ public class PreviewCollision : MonoBehaviour
     int groundLayer;
     int defaultLayer;
     int previewEnableLayer;
+    int previewUnenableLayer;
 
     public bool prewviewEnable = true;
 
@@ -15,6 +16,7 @@ public class PreviewCollision : MonoBehaviour
         groundLayer = LayerMask.NameToLayer("GROUND");
         defaultLayer = LayerMask.NameToLayer("Default");
         previewEnableLayer = 1 << groundLayer | 1 << defaultLayer;
+        previewUnenableLayer = ~previewEnableLayer;
     }
     void OnTriggerStay(Collider other)
     {
@@ -33,7 +35,7 @@ public class PreviewCollision : MonoBehaviour
         {
             prewviewEnable = true;
         }
-        else
+        else if((previewUnenableLayer & (1 << other.gameObject.layer)) != 0)
         {
             prewviewEnable = false;
         }
@@ -41,7 +43,48 @@ public class PreviewCollision : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        //prewviewEnable = true;
+        if (!other)
+        {
+            prewviewEnable = true;
+            return;
+        }
+
+        else
+        {
+            Debug.Log(other);
+        }
+
+        if ((previewEnableLayer & (1 << other.gameObject.layer)) != 0)
+        {
+            prewviewEnable = true;
+        }
+        else if ((previewUnenableLayer & (1 << other.gameObject.layer)) != 0)
+        {
+            prewviewEnable = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other)
+        {
+            prewviewEnable = true;
+            return;
+        }
+
+        else
+        {
+            Debug.Log(other);
+        }
+
+        if ((previewEnableLayer & (1 << other.gameObject.layer)) != 0)
+        {
+            prewviewEnable = true;
+        }
+        else if ((previewUnenableLayer & (1 << other.gameObject.layer)) != 0)
+        {
+            prewviewEnable = false;
+        }
     }
 
 

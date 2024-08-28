@@ -41,7 +41,7 @@ public class Buliding : MonoBehaviour
     int currIndex;
     int prevIndex;
 
-    bool buildEnableChange = false;
+    bool prevBuildEnable = false;
     bool buildEnable = false;
 
     void Start()
@@ -108,20 +108,20 @@ public class Buliding : MonoBehaviour
                 previewShader = previewUnenableShader;
             }
 
-            if (buildEnableChange != buildEnable)
+            if (prevBuildEnable != buildEnable)
             {
                 BuildObjectChange();
             }
 
-            buildEnableChange = buildEnable;
-            Debug.Log(buildEnableChange);
+            prevBuildEnable = buildEnable;
+            Debug.Log(prevBuildEnable);
             Debug.Log(buildEnable);
         }
 
         
     }
 
-    
+    // 건축 모드 시 프리뷰 오브젝트의 메테리얼을 변경하는 함수 현재 previewShader 가 적용됨
     void BuildObjectChange()
     {
         if(previewObject) 
@@ -144,6 +144,7 @@ public class Buliding : MonoBehaviour
         previewObject.AddComponent<PreviewCollision>();
     }
 
+    // B키에 바인딩 된 함수 건축 모드 전환 함수
     void OnBuliding()
     {
         _isBuilding = !_isBuilding;
@@ -169,6 +170,7 @@ public class Buliding : MonoBehaviour
         }
     }
 
+    // 마우스 좌클릭에 바인딩 건축 모드에서 조건 체크 후 건설 함수 호출
     public void OnBuildingConfirm()
     {
         if (bulidObjects.Count <= 0)
@@ -176,9 +178,14 @@ public class Buliding : MonoBehaviour
             Debug.LogError("Buliding System Error !");
             return;
         }
-        PlaceBuilding();
+
+        if (buildEnable)
+        {
+            PlaceBuilding();
+        }
     }
 
+    // 프리뷰 오브젝트 위치 재조정 함수
     IEnumerator UpdatePreviewPosition()
     {
         while(build)
@@ -193,6 +200,7 @@ public class Buliding : MonoBehaviour
         }
     }
 
+    // 프리뷰 오브젝트의 메테리얼을 원상복구하여 생성하는 함수 // 건설 함수
     void PlaceBuilding()
     {
         previewObject.GetComponent<BoxCollider>().isTrigger = false;
