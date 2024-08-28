@@ -43,6 +43,7 @@ public class ESCUI : MonoBehaviour
     {
         // 게임 실행
         uiManager.isPaused = false;
+        uiManager.playerInput.isCameraMove = true;
         Time.timeScale = 1.0f;
         // esc창 비활성화
         uiManager.isEsc = false;
@@ -57,8 +58,9 @@ public class ESCUI : MonoBehaviour
         Time.timeScale = 1.0f;
         uiManager.isPaused = false;
         uiManager.isEsc = false;
+        uiManager.playerInput.isCameraMove = true;
         // 로비 씬으로 이동
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     // 게임 종료
