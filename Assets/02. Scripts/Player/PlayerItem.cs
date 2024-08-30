@@ -32,6 +32,13 @@ public class PlayerItem : MonoBehaviour
         
     }
 
+    void Checkitem1()
+    {
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+        }
+    }
+
     void OnUseItem()
     {
         Debug.Log("Left button clicked");

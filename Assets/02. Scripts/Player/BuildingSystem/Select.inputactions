@@ -114,6 +114,17 @@
                     "action": "SelectItem",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c793d348-ee22-4b3a-9e3e-ea5ff040de82",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
