@@ -15911,7 +15911,7 @@ RectTransform:
   m_Children:
   - {fileID: 1837046888852725195}
   m_Father: {fileID: 1837046889919606901}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -19512,6 +19512,7 @@ MonoBehaviour:
   planetStateUI: {fileID: 0}
   playerStateUI: {fileID: 0}
   costUI: {fileID: 0}
+  buildUI: {fileID: 0}
   isEsc: 0
   isPaused: 0
   playerInput: {fileID: 0}
@@ -19548,7 +19549,7 @@ RectTransform:
   m_Children:
   - {fileID: 1837046890536599803}
   m_Father: {fileID: 1837046889919606901}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -20074,10 +20075,10 @@ RectTransform:
   - {fileID: 1837046890133425217}
   - {fileID: 1837046888796438808}
   - {fileID: 1837046889381483955}
+  - {fileID: 1837046889770185867}
   - {fileID: 1837046888764392915}
   - {fileID: 1837046890558029291}
   - {fileID: 1837046890735828140}
-  - {fileID: 1837046889770185867}
   - {fileID: 1837046889063799780}
   - {fileID: 1837046888830027685}
   m_Father: {fileID: 1837046890457858859}
@@ -22258,7 +22259,7 @@ RectTransform:
   m_Children:
   - {fileID: 1837046890500631759}
   m_Father: {fileID: 1837046889919606901}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -22379,7 +22380,7 @@ RectTransform:
   m_Children:
   - {fileID: 1837046890075589620}
   m_Father: {fileID: 1837046889919606901}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
