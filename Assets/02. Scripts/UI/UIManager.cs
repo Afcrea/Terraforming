@@ -14,9 +14,10 @@ public class UIManager : MonoBehaviour
     public PlayerStateUI playerStateUI = null;
     [HideInInspector]
     public CostUI costUI = null;
+    [HideInInspector]
+    public BuildUI buildUI = null;
     ESCUI escUI = null;
     InventoryUI inventoryUI = null;
-    BuildUI buildUI = null;
 
     // esc 버튼 눌렀는지 확인
     [HideInInspector]
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
     PlanetManager planetManager = null;
 
     // 플레이어 인풋 가져오기
+    [HideInInspector]
     public StarterAssetsInputs playerInput = null;
 
     private void Awake()
@@ -53,8 +55,6 @@ public class UIManager : MonoBehaviour
         PlanetStateUIUpdate();
         // Esc 메서드 실행
         Esc();
-        // SelectInven 메서드 실행
-        SelectInven();
         // 인벤, 건설 창 전환 메서드 실행
         ChangeBuildMode();
     }
@@ -95,117 +95,19 @@ public class UIManager : MonoBehaviour
     }
 
     // 인벤토리 선택 메서드
-    #region SelectInven
-    private void SelectInven()
+    public void SelectInventory(int _index)
     {
-        if (!buildUI.isBuild) // 건설 상태가 아닐 때
+        if (!buildUI.isBuild)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) // 숫자 키 1 입력 시
-            {
-                inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[0].transform);
-                inventoryUI.rect.position = inventoryUI.inventorys[0].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2)) // 숫자 키 2 입력 시
-            {
-                inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[1].transform);
-                inventoryUI.rect.position = inventoryUI.inventorys[1].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3)) // 숫자 키 3 입력 시
-            {
-                inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[2].transform);
-                inventoryUI.rect.position = inventoryUI.inventorys[2].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4)) // 숫자 키 4 입력 시
-            {
-                inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[3].transform);
-                inventoryUI.rect.position = inventoryUI.inventorys[3].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha5)) // 숫자 키 5 입력 시
-            {
-                inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[4].transform);
-                inventoryUI.rect.position = inventoryUI.inventorys[4].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha6)) // 숫자 키 6 입력 시
-            {
-                inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[5].transform);
-                inventoryUI.rect.position = inventoryUI.inventorys[5].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha7)) // 숫자 키 7 입력 시
-            {
-                inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[6].transform);
-                inventoryUI.rect.position = inventoryUI.inventorys[6].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha8)) // 숫자 키 8 입력 시
-            {
-                inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[7].transform);
-                inventoryUI.rect.position = inventoryUI.inventorys[7].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha9)) // 숫자 키 9 입력 시
-            {
-                inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[8].transform);
-                inventoryUI.rect.position = inventoryUI.inventorys[8].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha0)) // 숫자 키 0 입력 시
-            {
-                inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[9].transform);
-                inventoryUI.rect.position = inventoryUI.inventorys[9].transform.position;
-            }
+            inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[_index].transform);
+            inventoryUI.rect.position = inventoryUI.inventorys[_index].transform.position;
         }
-        else // 건설 상태 일때
+        else
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) // 숫자 키 1 입력 시
-            {
-                buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[0].transform);
-                buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[0].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2)) // 숫자 키 2 입력 시
-            {
-                buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[1].transform);
-                buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[1].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3)) // 숫자 키 3 입력 시
-            {
-                buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[2].transform);
-                buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[2].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4)) // 숫자 키 4 입력 시
-            {
-                buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[3].transform);
-                buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[3].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha5)) // 숫자 키 5 입력 시
-            {
-                buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[4].transform);
-                buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[4].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha6)) // 숫자 키 6 입력 시
-            {
-                buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[5].transform);
-                buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[5].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha7)) // 숫자 키 7 입력 시
-            {
-                buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[6].transform);
-                buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[6].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha8)) // 숫자 키 8 입력 시
-            {
-                buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[7].transform);
-                buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[7].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha9)) // 숫자 키 9 입력 시
-            {
-                buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[8].transform);
-                buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[8].transform.position;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha0)) // 숫자 키 0 입력 시
-            {
-                buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[9].transform);
-                buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[9].transform.position;
-            }
+            buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[_index].transform);
+            buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[_index].transform.position;
         }
     }
-    #endregion
 
     // 인벤 <-> 건설 창 변경 메서드
     private void ChangeBuildMode()

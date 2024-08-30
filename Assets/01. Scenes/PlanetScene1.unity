@@ -5431,6 +5431,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 1e38d79ff3b6e78458458f93c0a327db, type: 3}
   mainCamera: {fileID: 0}
   previewShader: {fileID: 2100000, guid: 8d5bc9352bb3bee45ae74825bc871eff, type: 2}
+  rotationAngle: 15
 --- !u!1 &749470389
 GameObject:
   m_ObjectHideFlags: 0
@@ -19491,7 +19492,7 @@ GameObject:
   - component: {fileID: 1837046889758318362}
   m_Layer: 0
   m_Name: UIManager
-  m_TagString: Untagged
+  m_TagString: UIMANAGER
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19513,6 +19514,7 @@ MonoBehaviour:
   costUI: {fileID: 0}
   isEsc: 0
   isPaused: 0
+  playerInput: {fileID: 0}
 --- !u!1 &1837046889770185864
 GameObject:
   m_ObjectHideFlags: 0
