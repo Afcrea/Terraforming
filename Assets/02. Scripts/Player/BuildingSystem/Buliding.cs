@@ -44,6 +44,10 @@ public class Buliding : MonoBehaviour
     bool prevBuildEnable = false;
     bool buildEnable = false;
 
+    [Tooltip("건설 오브젝트 돌릴 각도")]
+    public float rotationAngle = 15f;
+    float rotation;
+
     void Start()
     {
         ThirdPersonController = GetComponent<ThirdPersonController>();
@@ -114,8 +118,8 @@ public class Buliding : MonoBehaviour
             }
 
             prevBuildEnable = buildEnable;
-            Debug.Log(prevBuildEnable);
-            Debug.Log(buildEnable);
+            //Debug.Log(prevBuildEnable);
+            //Debug.Log(buildEnable);
         }
 
         
@@ -134,7 +138,10 @@ public class Buliding : MonoBehaviour
             Debug.LogError("Buliding System Error !");
             return;
         }
+        
         previewObject = Instantiate(buildingPrefab);
+
+        previewObject.transform.rotation = Quaternion.Euler(0, rotation, 0);
 
         // 오브젝트의 셰이더를 미리보기 셰이더로 변경
         var renderer = previewObject.GetComponent<Renderer>();
@@ -183,6 +190,23 @@ public class Buliding : MonoBehaviour
         {
             PlaceBuilding();
         }
+    }
+
+    // C 키에 바인딩 건축오브젝트 파괴
+    void OnDestoryBuildObj()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if(Physics.Raycast(ray, out RaycastHit hitinfo, 50f, 1 << buildObjLayer))
+        {
+            Destroy(hitinfo.collider.gameObject);
+        }
+    }
+
+    // E 키에 바인딩 건축 오브젝트 회전
+    void OnChangRotation()
+    {
+        rotation = rotation + rotationAngle;
+        previewObject.transform.rotation = Quaternion.Euler(0, rotation, 0);
     }
 
     // 프리뷰 오브젝트 위치 재조정 함수

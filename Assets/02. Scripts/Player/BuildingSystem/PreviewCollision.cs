@@ -28,7 +28,7 @@ public class PreviewCollision : MonoBehaviour
 
         else
         {
-            Debug.Log(other);
+            //Debug.Log(other);
         }
 
         if((previewEnableLayer & (1 << other.gameObject.layer)) != 0)
@@ -51,7 +51,7 @@ public class PreviewCollision : MonoBehaviour
 
         else
         {
-            Debug.Log(other);
+            //Debug.Log(other);
         }
 
         if ((previewEnableLayer & (1 << other.gameObject.layer)) != 0)
@@ -74,7 +74,7 @@ public class PreviewCollision : MonoBehaviour
 
         else
         {
-            Debug.Log(other);
+            //Debug.Log(other);
         }
 
         if ((previewEnableLayer & (1 << other.gameObject.layer)) != 0)
