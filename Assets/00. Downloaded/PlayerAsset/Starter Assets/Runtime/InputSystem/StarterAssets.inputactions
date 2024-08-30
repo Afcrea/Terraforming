@@ -282,6 +282,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DestoryBuildObj",
+                    "type": "Button",
+                    "id": "3aa6bd95-521c-46ec-a782-5b3d6bd105e8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangRotation",
+                    "type": "Button",
+                    "id": "712bf252-d705-493f-8593-b83d010b5106",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -304,6 +322,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Buliding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0eae9379-0ee3-46d2-9b67-84544993c630",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DestoryBuildObj",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "82584942-e7b1-42e6-a692-31a55dd4c38b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangRotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
