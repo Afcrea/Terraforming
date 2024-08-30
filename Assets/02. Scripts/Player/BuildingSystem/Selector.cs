@@ -14,6 +14,12 @@ public class Selector : MonoBehaviour
         get { return _selectedIndex; }
     }
 
+    UIManager uiManager = null;
+
+    private void Awake()
+    {
+        uiManager = GameObject.FindGameObjectWithTag("UIMANAGER").GetComponent<UIManager>();
+    }
 
     void OnEnable()
     {
@@ -71,7 +77,6 @@ public class Selector : MonoBehaviour
                 break;
             case "0":
                 SelectItem(9);
-                print("0");
                 break;
             default:
                 Debug.LogWarning("Unexpected key: " + key);
@@ -82,8 +87,8 @@ public class Selector : MonoBehaviour
     private void SelectItem(int index)
     {
         // 인덱스에 따라 아이템 선택 처리
-        //Debug.Log("Selected item at index: " + index);
-
         _selectedIndex = index;
+
+        uiManager.SelectInventory(index);
     }
 }

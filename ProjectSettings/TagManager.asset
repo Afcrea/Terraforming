@@ -12,6 +12,7 @@ TagManager:
   - SELECTPANEL
   - PLANET
   - PLAYER
+  - UIMANAGER
   layers:
   - Default
   - TransparentFX
