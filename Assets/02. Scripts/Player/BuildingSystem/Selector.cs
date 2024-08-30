@@ -69,8 +69,9 @@ public class Selector : MonoBehaviour
             case "9":
                 SelectItem(8);
                 break;
-            case "10":
+            case "0":
                 SelectItem(9);
+                print("0");
                 break;
             default:
                 Debug.LogWarning("Unexpected key: " + key);
