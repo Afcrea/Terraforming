@@ -738,6 +738,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1098315185379501133, guid: 31f50dd077762be47ad6e5845512fffc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6979289236135637468, guid: 31f50dd077762be47ad6e5845512fffc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2051,6 +2055,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1098315185379501133, guid: 31f50dd077762be47ad6e5845512fffc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6979289236135637468, guid: 31f50dd077762be47ad6e5845512fffc, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4256,6 +4264,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1098315185379501133, guid: 31f50dd077762be47ad6e5845512fffc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6979289236135637468, guid: 31f50dd077762be47ad6e5845512fffc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6718,6 +6730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6969b3a385e4204d93eeb324cdc3b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idx: 0
 --- !u!114 &741202643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6763,7 +6776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCurrHp: 10
   playerHpUI: 1
-  playerCurrFull: 100
+  playerCurrFull: 50
   playerFullUI: 1
   playerCurrWater: 100
   playerWaterUI: 1

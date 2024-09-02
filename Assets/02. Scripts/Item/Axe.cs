@@ -13,9 +13,9 @@ public class Axe : MonoBehaviour, IItem
         // 기본 지급
     }
 
-    public void ItemUse()
+    public void UseItem(int i)
     {
-        throw new System.NotImplementedException();
+        return;
     }
 
     public Sprite GetSprite()
