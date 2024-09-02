@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class PlanetStateUI : MonoBehaviour
 {
-    // 행성 온도 UI 가져오기
+    // 행성 스탯 UI 가져오기
     [HideInInspector]
-    public Text temperatureText = null;
+    public Text[] planetStateTexts = null;
 
     private void Awake()
     {
-        temperatureText = GetComponentInChildren<Text>();
+        planetStateTexts = GetComponentsInChildren<Text>();
     }
 }
