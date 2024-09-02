@@ -17,7 +17,7 @@ public class BuildUI : MonoBehaviour
     [HideInInspector]
     public BuildInventoryGroup buildInvenGroup = null;
 
-    private void Awake()
+    public void BuildUIInit()
     {
         texts = GetComponentsInChildren<Text>();
         texts[3].gameObject.SetActive(false);
@@ -25,6 +25,7 @@ public class BuildUI : MonoBehaviour
         buttons[1].gameObject.SetActive(false);
 
         buildInvenGroup = GetComponentInChildren<BuildInventoryGroup>();
+        buildInvenGroup.BuildInventoryGroupInit();
         buildInvenGroup.gameObject.SetActive(false);
     }
 }

@@ -9,7 +9,7 @@ public class PlanetStateUI : MonoBehaviour
     [HideInInspector]
     public Text[] planetStateTexts = null;
 
-    private void Awake()
+    public void PlanetStateUIInit()
     {
         planetStateTexts = GetComponentsInChildren<Text>();
     }

@@ -7,7 +7,8 @@ public class EasterEggUI : MonoBehaviour
 {
     Button[] buttons;
 
-    private void Awake()
+    // 이스터에그 UI init 메서드
+    public void EasterEggUIInit()
     {
         buttons = GetComponentsInChildren<Button>();
 
@@ -15,11 +16,13 @@ public class EasterEggUI : MonoBehaviour
         buttons[1].onClick.AddListener(QuitGame);
     }
 
+    // 새 게임 눌렀을 때 실행될 메서드
     private void NewGame()
     {
         Debug.Log("New Game");
     }
 
+    // 게임 종료 버튼 눌렀을 때 실행될 메서드
     private void QuitGame()
     {
         Application.Quit();

@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class CostUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void CostUIInit()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // ÄÚ½ºÆ® UI Init
     }
 }
