@@ -6,6 +6,7 @@ using UnityEngine;
 public class WaterSupplier : MonoBehaviour, IInteractable, IDemolish
 {
     private ItemManager itemManager = null;
+    private PlayerState playerState = null;
 
     private void Awake()
     {
@@ -15,12 +16,19 @@ public class WaterSupplier : MonoBehaviour, IInteractable, IDemolish
         {
             Debug.LogError("ItemManager is not found in the scene.");
         }
+
+        //씬에서 PlayerState 찾기
+        playerState = FindObjectOfType<PlayerState>();
+        if (playerState == null)
+        {
+            Debug.LogError("PlayerState is not found in the scene.");
+        }
     }
 
-    //★상호작용시 플레이어 수분 + 
+    //상호작용시 플레이어 체내 수분량 최대치로
     public void Interact()
     {
-
+        playerState.PlayerCurrWater = playerState.PlayerInitWater;
     }
 
     //건물 부수고 다시 재료 반환하는 함수 - IDemolish 인터페이스
