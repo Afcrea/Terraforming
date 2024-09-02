@@ -14,6 +14,7 @@ public class PlayerItem : MonoBehaviour
     List<Tuple<GameObject, int>> hasItem;
 
 
+
     private void Awake()
     {
         itemManager = FindObjectOfType<ItemManager>();
@@ -54,13 +55,12 @@ public class PlayerItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IInteractable item = other.GetComponent<IInteractable>();
+        IItem item = other.GetComponent<IItem>();
 
         if (item != null)
         {
-            item.Interact();
+            item.GetItem();
         }
     }
-
 }
 

@@ -6363,6 +6363,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0c760924d4f804fb5dcc4b431d07f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  treePrefabs: []
+  flowerPrefab: {fileID: 0}
+  axePrefab: {fileID: 0}
+  pickaxePrefab: {fileID: 0}
+  playerState: {fileID: 0}
+  itemList: []
+  iItemList: []
 --- !u!4 &877262621
 Transform:
   m_ObjectHideFlags: 0
@@ -21890,8 +21897,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
