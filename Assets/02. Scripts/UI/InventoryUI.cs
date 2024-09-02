@@ -16,25 +16,17 @@ public class InventoryUI : MonoBehaviour
 
     private ItemManager itemManager;
 
-    void Awake()
+    public void InventoryUIInit()
     {
         inventorys = GetComponentsInChildren<Inventory>();
         selectInven = GetComponentInChildren<SelectInven>();
         rect = selectInven.GetComponent<RectTransform>();
-    }
 
-    private void Start()
-    {
-        //������ ItemManager ã�ƿ���
         itemManager = FindObjectOfType<ItemManager>();
         if (itemManager == null)
         {
             Debug.LogError("ItemManager is not found in the scene.");
         }
-    }
-
-    private void Update()
-    {
     }
 
     public void inventoryUIUpdate()
@@ -104,6 +96,5 @@ public class InventoryUI : MonoBehaviour
             }
             idx++;
         }
-        
     }
 }

@@ -18,7 +18,7 @@ public class ESCUI : MonoBehaviour
     // UI Manager 가져오기
     UIManager uiManager = null;
 
-    private void Awake()
+    public void EscUIInit()
     {
         buttons = GetComponentsInChildren<Button>();
         continueGameButton = buttons[0];
@@ -28,10 +28,7 @@ public class ESCUI : MonoBehaviour
         volumeSlider = GetComponentInChildren<Slider>();
 
         uiManager = GetComponentInParent<UIManager>();
-    }
 
-    private void Start()
-    {
         // 버튼에 이벤트 매핑
         continueGameButton.onClick.AddListener(ContinueGame);
         newGameButton.onClick.AddListener(NewGame);

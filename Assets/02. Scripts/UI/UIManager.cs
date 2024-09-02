@@ -40,6 +40,30 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        // 모든 UI 가져오기
+        UIManagerInit();
+
+        // 가져온 모든 UI 순서대로 Init 해주기
+        AllUIInit();
+
+        // esc, die, 행성 스탯 창은 기본으로 꺼져있게 하기
+        OffSomeUI();
+    }
+
+    private void Update()
+    {
+        Esc();
+        OpenPlanetState();
+        ChangeBuildMode();
+        VisiblePlayerStateUI();
+        PlanetStateCheck();
+    }
+
+    // UIManager Init 메서드
+    // UiManager 하위 오브젝트들 모두 가져오기
+    #region UIManager Init
+    private void UIManagerInit()
+    {
         planetStateUI = GetComponentInChildren<PlanetStateUI>();
         playerStateUI = GetComponentInChildren<PlayerStateUI>();
         escUI = GetComponentInChildren<ESCUI>();
@@ -51,30 +75,34 @@ public class UIManager : MonoBehaviour
         planetManager = GameObject.FindGameObjectWithTag("PLANETMANAGER").GetComponent<PlanetManager>();
         playerInput = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<StarterAssetsInputs>();
         playerState = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<PlayerState>();
+    }
+    #endregion
 
-        // esc, die 창은 기본으로 꺼져있게 하기
+    // LazyInit으로 하위 오브젝트 init해주는 메서드
+    #region All UI Init
+    private void AllUIInit()
+    {
+        playerStateUI.PlanyerStateUIInit();
+        inventoryUI.InventoryUIInit();
+        buildUI.BuildUIInit();
+        planetStateUI.PlanetStateUIInit();
+        costUI.CostUIInit();
+        escUI.EscUIInit();
+        dieUI.DieUiInit();
+        dieUI.easterEggUI.EasterEggUIInit();
+    }
+    #endregion
+
+    // Esc, Die, 행성 스탯 창 시작 시 꺼두기
+    #region Off Some UI
+    private void OffSomeUI()
+    {
         escUI.gameObject.SetActive(false);
         dieUI.gameObject.SetActive(false);
         dieUI.easterEggUI.gameObject.SetActive(false);
         planetStateUI.gameObject.SetActive(false);
     }
-
-    private void Update()
-    {
-        Esc();
-        OpenPlanetState();
-        ChangeBuildMode();
-        VisiblePlayerStateUI();
-        PlanetStateCheck();
-
-        if (Input.GetKeyDown(KeyCode.I)) 
-        {
-            print(escUI.gameObject.name);
-            print(dieUI.gameObject.name);
-            print(dieUI.easterEggUI.gameObject.name);
-
-        }
-    }
+    #endregion
 
     // Esc 메서드
     #region ESC
@@ -108,7 +136,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     // 오픈 행성 정보창 메서드
-    #region OpenPlanetState
+    #region Open Planet State
     private void OpenPlanetState()
     {
         // Tab키가 눌렸을 때
@@ -123,7 +151,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     // 인벤토리 선택 메서드
-    #region SelectInventory
+    #region Select Inventory
     public void SelectInventory(int _index)
     {
         if (!buildUI.isBuild)
@@ -140,7 +168,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     // 인벤 <-> 건설 창 변경 메서드
-    #region ChangeBuildMode
+    #region Change Build Mode
     private void ChangeBuildMode()
     {
         if (Input.GetKeyDown(KeyCode.B) && buildUI.isBuild == false)
@@ -167,7 +195,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     // 행성 상태 체크 메서드
-    #region PlanetStateCheck
+    #region Planet State Check
     private void PlanetStateCheck()
     {
         planetStateUI.planetStateTexts[1].text = "기온 : " + planetManager.temperature + "ºC";
@@ -185,7 +213,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     // 플레이어 상태 UI 표시 메서드
-    #region VisiblePlayerStateUI
+    #region Visible Player State UI
     private void VisiblePlayerStateUI()
     {
         playerStateUI.hpBarImage.fillAmount = playerState.playerHpUI;
@@ -200,6 +228,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     // 인벤토리 UI 새로고침 아이템매니저에서 호출
+    #region Inventory Update Method
     public void AddInventoryUI(int idx, GameObject item)
     {
         GetComponentInChildren<InventoryUI>().AddInventoryUIImage(idx, item);
@@ -209,4 +238,5 @@ public class UIManager : MonoBehaviour
     {
         GetComponentInChildren<InventoryUI>().RemoveInventoryUIImage();
     }
+    #endregion
 }

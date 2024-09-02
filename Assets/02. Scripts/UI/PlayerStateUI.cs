@@ -37,7 +37,7 @@ public class PlayerStateUI : MonoBehaviour
     [HideInInspector]
     public Text oxygenText = null;
 
-    private void Awake()
+    public void PlanyerStateUIInit()
     {
         hpBar = GetComponentInChildren<HpBar>();
         fullBar = GetComponentInChildren<FullBar>();

@@ -12,7 +12,7 @@ public class BuildInventoryGroup : MonoBehaviour
     [HideInInspector]
     public RectTransform rect = null;
 
-    private void Awake()
+    public void BuildInventoryGroupInit()
     {
         buildInvens = GetComponentsInChildren<BuildInventory>();
         selectBuildInven = GetComponentInChildren<SelectBuildInven>();
