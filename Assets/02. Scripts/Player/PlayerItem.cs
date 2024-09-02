@@ -11,9 +11,7 @@ public class PlayerItem : MonoBehaviour
     GameObject seedPrefabs = null;
     GameObject seedlingPrefabs = null;
 
-    List<Tuple<GameObject, int>> hasItem;
-
-
+    public int idx;
 
     private void Awake()
     {
@@ -42,14 +40,24 @@ public class PlayerItem : MonoBehaviour
 
     void OnUseItem()
     {
-        Debug.Log("Left button clicked");
 
+        // 아이템 리스트의 크기를 오버해서 인덱스가 선택된 경우
+        if(ItemManager.Instance.itemList.Count < idx+1)
+        {
+            return; 
+        }
 
+        // idx 는 계속 바뀌지만 해당 인덱스의 아이템 리스트가 비어 있을 수 있다
+        if (ItemManager.Instance.itemList[idx] == null)
+        {
+            return;
+        }
+
+        itemManager.itemList[idx].GetComponent<IItem>().UseItem(idx);
     }
 
     public void currItem()
     {
-        
         
     }
 

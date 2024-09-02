@@ -6,6 +6,33 @@ using UnityEngine.UIElements;
 
 public class ItemManager : MonoBehaviour
 {
+    private ItemManager() { }
+
+    private static ItemManager _instance;
+
+    private static readonly object _lock = new object();
+
+    public static ItemManager Instance
+    {
+        get
+        {
+            // 인스턴스가 아직 생성되지 않았다면
+            if (_instance == null)
+            {
+                // 스레드 안전성을 위해 lock 사용
+                lock (_lock)
+                {
+                    // 다시 한 번 확인하여 여러 스레드에서 동시에 인스턴스를 생성하지 않도록 함
+                    if (_instance == null)
+                    {
+                        _instance = new ItemManager();
+                    }
+                }
+            }
+            return _instance;
+        }
+    }
+
     //아이템 개수 관리 위한 변수
     private int ironCount = 0;
     private int stoneCount = 0;
@@ -57,19 +84,37 @@ public class ItemManager : MonoBehaviour
 
     public PlayerState playerState = null;
 
-    private void Awake()
-    {
-        //씬에서 PlayerState 찾기
-        playerState = FindObjectOfType<PlayerState>();
-        if (playerState == null)
-        {
-            Debug.LogError("PlayerState is not found in the scene.");
-        }
-    }
+    UIManager uiManager = null;
+
 
     // 먹은 아이템 관리하기 위한 리스트
     public List<GameObject> itemList = null;
     public List<GameObject> iItemList = null;
+    int iItemCount = 10;
+
+    private void Awake()
+    {
+        //씬에서 PlayerState 찾기
+        playerState = FindObjectOfType<PlayerState>();
+
+        if (playerState == null)
+        {
+            Debug.LogError("PlayerState is not found in the scene.");
+        }
+
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            // 인스턴스를 설정하고 이 객체를 파괴되지 않게 설정
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        uiManager = FindObjectOfType<UIManager>();
+    }
 
     private void Start()
     {
@@ -82,50 +127,36 @@ public class ItemManager : MonoBehaviour
         playerTr = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
         //혹은 플레이어가 Ray Sphere 뿌려서 바닥과 맞닿은 지점 하나 추출해서 그 위치값 받아서 생성 => 비탈길에 심기 가능
 
-        itemList.Add(axePrefab);
-        itemList.Add(pickaxePrefab);
+        for(int i = 0; i < iItemCount; i++)
+        {
+            itemList.Add(null);
+        }
+
+        AddItemList(axePrefab);
+        AddItemList(pickaxePrefab);
     }
 
-    ////묘목으로 나무 재생성
-    //public void PlantTree()
-    //{
-    //    SeedlingCount--;
+    public void AddItemList(GameObject item)
+    {
+        int idx = 0;
+        foreach (GameObject itemnull in itemList)
+        {
+            if(itemnull == null)
+            {
+                break;
+            }
+            idx++;
+        }
 
-    //    //배열 안에 있는 거 하나 랜덤으로 가져와서 생성
-    //    int num = Random.Range(0, treePrefabs.Length);
-    //    GameObject treePrefab = treePrefabs[num];
+        itemList[idx] = item;
 
-    //    //생성할 위치
-    //    Vector3 plantTr = new Vector3(playerTr.position.x + Random.Range(0.1f, 0.5f),
-    //                                  playerTr.position.y,
-    //                                  playerTr.position.z + Random.Range(0.1f, 0.5f));
-
-    //    //심으면 원래 나무의 0.1크기로 생성하고 채집 가능 여부 false로 변경
-    //    GameObject go = Instantiate(treePrefab, plantTr, Quaternion.identity);
-    //    go.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-    //    go.GetComponent<Tree>().isGathering = false;
-    //}
-
-    ////씨앗으로 꽃 재생성
-    //public void PlantFlower()
-    //{
-    //    SeedCount--;
-
-    //    //생성할 위치
-    //    Vector3 plantTr = new Vector3(playerTr.position.x + Random.Range(0.1f, 0.5f),
-    //                                  playerTr.position.y,
-    //                                  playerTr.position.z + Random.Range(0.1f, 0.5f));
-
-    //    //심으면 원래 나무의 0.1크기로 생성하고 채집 가능 여부 false로 변경
-    //    GameObject go = Instantiate(flowerPrefab, plantTr, Quaternion.identity);
-    //    go.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-    //    go.GetComponent<Flower>().isGathering = false;
-    //}
-
-    ////열매 먹기
-    //public void EatFruit()
-    //{
-    //    FruitCount--;
-
-        //★ 플레이어 포만감 +
+        uiManager.AddInventoryUI(idx, item);
     }
+
+    public void RemoveItem(int i)
+    {
+        itemList[i] = null;
+        uiManager.RemoveInventoryUI();
+    }
+
+}

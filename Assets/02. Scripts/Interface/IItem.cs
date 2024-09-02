@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IItem
 {
     void GetItem();
-    void ItemUse();
+    void UseItem(int i);
 
     Sprite GetSprite();
 }

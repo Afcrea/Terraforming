@@ -16,9 +16,16 @@ public class Selector : MonoBehaviour
 
     UIManager uiManager = null;
 
+    PlayerItem pitem;
+
     private void Awake()
     {
         uiManager = GameObject.FindGameObjectWithTag("UIMANAGER").GetComponent<UIManager>();
+    }
+
+    private void Start()
+    {
+        pitem = GetComponent<PlayerItem>();
     }
 
     void OnEnable()
@@ -88,6 +95,8 @@ public class Selector : MonoBehaviour
     {
         // 인덱스에 따라 아이템 선택 처리
         _selectedIndex = index;
+
+        pitem.idx = index;
 
         uiManager.SelectInventory(index);
     }

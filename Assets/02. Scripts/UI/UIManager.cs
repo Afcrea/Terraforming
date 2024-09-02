@@ -198,4 +198,15 @@ public class UIManager : MonoBehaviour
         playerStateUI.oxygenText.text = playerState.playerOxygenUI * 100 + "%";
     }
     #endregion
+
+    // 인벤토리 UI 새로고침 아이템매니저에서 호출
+    public void AddInventoryUI(int idx, GameObject item)
+    {
+        GetComponentInChildren<InventoryUI>().AddInventoryUIImage(idx, item);
+    }
+
+    public void RemoveInventoryUI()
+    {
+        GetComponentInChildren<InventoryUI>().RemoveInventoryUIImage();
+    }
 }
