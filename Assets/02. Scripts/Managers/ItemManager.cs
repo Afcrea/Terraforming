@@ -52,6 +52,18 @@ public class ItemManager : MonoBehaviour
     //생성할 위치 파악하기 위한 변수
     Transform playerTr = null;
 
+    private PlayerState playerState = null;
+
+    private void Awake()
+    {
+        //씬에서 PlayerState 찾기
+        playerState = FindObjectOfType<PlayerState>();
+        if (playerState == null)
+        {
+            Debug.LogError("PlayerState is not found in the scene.");
+        }
+    }
+
     private void Start()
     {
         treePrefabs = Resources.LoadAll<GameObject>("Prefabs/TreePrefabs");
@@ -103,6 +115,9 @@ public class ItemManager : MonoBehaviour
     {
         FruitCount--;
 
-        //★ 플레이어 포만감 +
+        //플레이어 포만감 +10
+        playerState.PlayerCurrFull += 10;
+        //플레이어 포만감이 최대치 이상으로 올라가면 최대치로 고정
+        playerState.PlayerCurrFull = (playerState.PlayerCurrFull > playerState.PlayerInitFull) ? playerState.PlayerInitFull : playerState.PlayerCurrFull;
     }
 }

@@ -5432,6 +5432,26 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   previewShader: {fileID: 2100000, guid: 8d5bc9352bb3bee45ae74825bc871eff, type: 2}
   rotationAngle: 15
+--- !u!114 &741202646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741202633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a7ca48459b1ea48af017d935c3c6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCurrHp: 10
+  playerHpUI: 1
+  playerCurrFull: 100
+  playerFullUI: 1
+  playerCurrWater: 100
+  playerWaterUI: 1
+  playerCurrOxygen: 100
+  playerOxygenUI: 1
 --- !u!1 &749470389
 GameObject:
   m_ObjectHideFlags: 0
