@@ -1,20 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Fruit : MonoBehaviour, IInteractable
+using UnityEngine.Playables;
+using UnityEngine.UI;
+public class Fruit : MonoBehaviour, IItem
 {
     private ItemManager itemManager;
     private Transform playerTr;         //플레이어 위치 담아올 변수
     private float distance = 3f;        //자석 효과 시작할 플레이어와 오브젝트 사이 거리
     private float magnetSpeed = 0.2f;   //자석 효과 속도
 
-    public void Interact()
-    {
-        itemManager.FruitCount++;
-        //Debug.Log(this.name + " 개수 : " + itemManager.FruitCount);
-        Destroy(this.gameObject);
-    }
+    public Sprite inventoryImageSource;
 
     private void Awake()
     {
@@ -35,5 +31,29 @@ public class Fruit : MonoBehaviour, IInteractable
             Vector3 magnetToPlayer = playerTr.position - this.transform.position;
             transform.Translate(magnetToPlayer * magnetSpeed * Time.deltaTime, Space.Self);
         }
+    }
+
+    public void GetItem()
+    {
+        itemManager.FruitCount++;
+        //Debug.Log(this.name + " 개수 : " + itemManager.FruitCount);
+        itemManager.itemList.Add(this.gameObject);
+        Destroy(this.gameObject);
+    }
+
+    public void ItemUse()
+    {
+        itemManager.FruitCount--;
+
+        //★ 플레이어 포만감 +
+
+        itemManager.playerState.PlayerCurrFull += 10;
+
+        itemManager.playerState.PlayerCurrFull = (itemManager.playerState.PlayerCurrFull > itemManager.playerState.PlayerInitFull) ? itemManager.playerState.PlayerInitFull : itemManager.playerState.PlayerCurrFull;
+    }
+
+    public Sprite GetSprite()
+    {
+        return inventoryImageSource;
     }
 }

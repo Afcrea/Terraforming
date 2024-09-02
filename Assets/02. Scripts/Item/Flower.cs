@@ -12,6 +12,7 @@ public class Flower : MonoBehaviour, IInteractable
     GameObject seedPrefab;              //씨앗 오브젝트
     GameObject fruitPrefab;             //열매 오브젝트
 
+
     private void Awake()
     {
         //씬에서 ItemManager 찾아오기

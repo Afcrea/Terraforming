@@ -46,13 +46,16 @@ public class ItemManager : MonoBehaviour
     }
 
     //심기 위한 프리팹 저장 변수
-    GameObject[] treePrefabs = null;
-    GameObject flowerPrefab = null;
+    public GameObject[] treePrefabs = null;
+    public GameObject flowerPrefab = null;
+    public GameObject axePrefab = null;
+    public GameObject pickaxePrefab = null;
+
 
     //생성할 위치 파악하기 위한 변수
     Transform playerTr = null;
 
-    private PlayerState playerState = null;
+    public PlayerState playerState = null;
 
     private void Awake()
     {
@@ -64,60 +67,65 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+    // 먹은 아이템 관리하기 위한 리스트
+    public List<GameObject> itemList = null;
+    public List<GameObject> iItemList = null;
+
     private void Start()
     {
         treePrefabs = Resources.LoadAll<GameObject>("Prefabs/TreePrefabs");
         flowerPrefab = Resources.Load<GameObject>("Prefabs/Flower");
+        axePrefab = Resources.Load<GameObject>("Prefabs/Tools/Axe");
+        pickaxePrefab = Resources.Load<GameObject>("Prefabs/Tools/PickAxe");
 
         //플레이어 위치 받아옴
         playerTr = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
         //혹은 플레이어가 Ray Sphere 뿌려서 바닥과 맞닿은 지점 하나 추출해서 그 위치값 받아서 생성 => 비탈길에 심기 가능
+
+        itemList.Add(axePrefab);
+        itemList.Add(pickaxePrefab);
     }
 
-    //묘목으로 나무 재생성
-    public void PlantTree()
-    {
-        SeedlingCount--;
+    ////묘목으로 나무 재생성
+    //public void PlantTree()
+    //{
+    //    SeedlingCount--;
 
-        //배열 안에 있는 거 하나 랜덤으로 가져와서 생성
-        int num = Random.Range(0, treePrefabs.Length);
-        GameObject treePrefab = treePrefabs[num];
+    //    //배열 안에 있는 거 하나 랜덤으로 가져와서 생성
+    //    int num = Random.Range(0, treePrefabs.Length);
+    //    GameObject treePrefab = treePrefabs[num];
 
-        //생성할 위치
-        Vector3 plantTr = new Vector3(playerTr.position.x + Random.Range(0.1f, 0.5f),
-                                      playerTr.position.y,
-                                      playerTr.position.z + Random.Range(0.1f, 0.5f));
+    //    //생성할 위치
+    //    Vector3 plantTr = new Vector3(playerTr.position.x + Random.Range(0.1f, 0.5f),
+    //                                  playerTr.position.y,
+    //                                  playerTr.position.z + Random.Range(0.1f, 0.5f));
 
-        //심으면 원래 나무의 0.1크기로 생성하고 채집 가능 여부 false로 변경
-        GameObject go = Instantiate(treePrefab, plantTr, Quaternion.identity);
-        go.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        go.GetComponent<Tree>().isGathering = false;
+    //    //심으면 원래 나무의 0.1크기로 생성하고 채집 가능 여부 false로 변경
+    //    GameObject go = Instantiate(treePrefab, plantTr, Quaternion.identity);
+    //    go.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+    //    go.GetComponent<Tree>().isGathering = false;
+    //}
+
+    ////씨앗으로 꽃 재생성
+    //public void PlantFlower()
+    //{
+    //    SeedCount--;
+
+    //    //생성할 위치
+    //    Vector3 plantTr = new Vector3(playerTr.position.x + Random.Range(0.1f, 0.5f),
+    //                                  playerTr.position.y,
+    //                                  playerTr.position.z + Random.Range(0.1f, 0.5f));
+
+    //    //심으면 원래 나무의 0.1크기로 생성하고 채집 가능 여부 false로 변경
+    //    GameObject go = Instantiate(flowerPrefab, plantTr, Quaternion.identity);
+    //    go.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+    //    go.GetComponent<Flower>().isGathering = false;
+    //}
+
+    ////열매 먹기
+    //public void EatFruit()
+    //{
+    //    FruitCount--;
+
+        //★ 플레이어 포만감 +
     }
-
-    //씨앗으로 꽃 재생성
-    public void PlantFlower()
-    {
-        SeedCount--;
-
-        //생성할 위치
-        Vector3 plantTr = new Vector3(playerTr.position.x + Random.Range(0.1f, 0.5f),
-                                      playerTr.position.y,
-                                      playerTr.position.z + Random.Range(0.1f, 0.5f));
-
-        //심으면 원래 나무의 0.1크기로 생성하고 채집 가능 여부 false로 변경
-        GameObject go = Instantiate(flowerPrefab, plantTr, Quaternion.identity);
-        go.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        go.GetComponent<Flower>().isGathering = false;
-    }
-
-    //열매 먹기
-    public void EatFruit()
-    {
-        FruitCount--;
-
-        //플레이어 포만감 +10
-        playerState.PlayerCurrFull += 10;
-        //플레이어 포만감이 최대치 이상으로 올라가면 최대치로 고정
-        playerState.PlayerCurrFull = (playerState.PlayerCurrFull > playerState.PlayerInitFull) ? playerState.PlayerInitFull : playerState.PlayerCurrFull;
-    }
-}
