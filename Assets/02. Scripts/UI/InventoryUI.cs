@@ -43,6 +43,7 @@ public class InventoryUI : MonoBehaviour
                 
                 if(inventorys[idx].transform.Find("ItemIconImage") != null) 
                 {
+                    idx++;
                     continue;
                 }
 
@@ -62,6 +63,7 @@ public class InventoryUI : MonoBehaviour
 
                 rectTransform.GetComponent<Image>().sprite = itemList.GetComponent<IItem>().GetSprite();
                 idx++;
+                print(idx);
             }
         }
     }
