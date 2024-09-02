@@ -12,6 +12,8 @@ public class Fruit : MonoBehaviour, IItem
 
     public Sprite inventoryImageSource;
 
+    GameObject prefab;
+
     private void Awake()
     {
         //씬에서 ItemManager 찾아오기
@@ -22,6 +24,12 @@ public class Fruit : MonoBehaviour, IItem
         }
 
         playerTr = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();  //플레이어 태그로 위치 받아오기
+
+    }
+
+    private void Start()
+    {
+        prefab = Resources.Load<GameObject>("Prefabs/Fruit");
     }
 
     private void Update()
@@ -35,9 +43,15 @@ public class Fruit : MonoBehaviour, IItem
 
     public void GetItem()
     {
-        itemManager.FruitCount++;
         //Debug.Log(this.name + " 개수 : " + itemManager.FruitCount);
-        itemManager.itemList.Add(this.gameObject);
+
+        if (itemManager.FruitCount == 0)
+        {
+            itemManager.itemList.Add(prefab);
+        }
+
+        itemManager.FruitCount++;
+
         Destroy(this.gameObject);
     }
 

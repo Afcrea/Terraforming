@@ -11,12 +11,19 @@ public class Seed : MonoBehaviour, IItem
 
     public Sprite inventoryImageSource;
 
+    GameObject prefab;
+
     //취득
     public void GetItem()
     {
+        if (itemManager.SeedCount == 0)
+        {
+            itemManager.itemList.Add(prefab);
+        }
+
         itemManager.SeedCount++;
         //Debug.Log(this.name + " 개수 : " + itemManager.SeedCount);
-        itemManager.itemList.Add(this.gameObject);
+        
         Destroy(this.gameObject);
     }
     public void ItemUse()
@@ -50,6 +57,10 @@ public class Seed : MonoBehaviour, IItem
         playerTr = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();  //플레이어 태그로 위치 받아오기
     }
 
+    private void Start()
+    {
+        prefab = Resources.Load<GameObject>("Prefabs/Seed");
+    }
     private void Update()
     {
         if (Vector3.Distance(this.transform.position, playerTr.position) < distance)

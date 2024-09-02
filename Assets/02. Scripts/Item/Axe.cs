@@ -6,6 +6,8 @@ public class Axe : MonoBehaviour, IItem
 {
     public Sprite inventoryImageSource;
 
+    GameObject prefab;
+
     public void GetItem()
     {
         // 기본 지급
@@ -24,7 +26,7 @@ public class Axe : MonoBehaviour, IItem
     // Start is called before the first frame update
     void Start()
     {
-        
+        prefab = Resources.Load<GameObject>("Prefabs/Tools/Axe");
     }
 
     // Update is called once per frame
