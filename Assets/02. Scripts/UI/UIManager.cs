@@ -17,11 +17,14 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public BuildUI buildUI = null;
     ESCUI escUI = null;
+    DieUI dieUI = null;
     InventoryUI inventoryUI = null;
 
     // esc 버튼 눌렀는지 확인
     [HideInInspector]
     public bool isEsc = false;
+    // Tap키 눌렸는지 확인
+    bool isTab = false;
     // 게임을 정지했는지 확인
     [HideInInspector]
     public bool isPaused = false;
@@ -33,39 +36,48 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public StarterAssetsInputs playerInput = null;
 
+    PlayerState playerState = null;
+
     private void Awake()
     {
         planetStateUI = GetComponentInChildren<PlanetStateUI>();
         playerStateUI = GetComponentInChildren<PlayerStateUI>();
         escUI = GetComponentInChildren<ESCUI>();
+        dieUI = GetComponentInChildren<DieUI>();
         costUI = GetComponentInChildren<CostUI>();
         inventoryUI = GetComponentInChildren<InventoryUI>();
         buildUI = GetComponentInChildren<BuildUI>();
 
-        planetManager = GameObject.Find("PlanetManager").GetComponent<PlanetManager>();
+        planetManager = GameObject.FindGameObjectWithTag("PLANETMANAGER").GetComponent<PlanetManager>();
         playerInput = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<StarterAssetsInputs>();
+        playerState = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<PlayerState>();
 
-        // esc 창은 기본으로 꺼져있게 하기
+        // esc, die 창은 기본으로 꺼져있게 하기
         escUI.gameObject.SetActive(false);
+        dieUI.gameObject.SetActive(false);
+        dieUI.easterEggUI.gameObject.SetActive(false);
+        planetStateUI.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        // UI Update 메서드 실행
-        PlanetStateUIUpdate();
-        // Esc 메서드 실행
         Esc();
-        // 인벤, 건설 창 전환 메서드 실행
+        OpenPlanetState();
         ChangeBuildMode();
-    }
+        VisiblePlayerStateUI();
+        PlanetStateCheck();
 
-    // 행성 상태 UI Update 메서드
-    private void PlanetStateUIUpdate()
-    {
-        planetStateUI.temperatureText.text = "기온 " + planetManager.temperature.ToString("F1") + " ºC";
+        if (Input.GetKeyDown(KeyCode.I)) 
+        {
+            print(escUI.gameObject.name);
+            print(dieUI.gameObject.name);
+            print(dieUI.easterEggUI.gameObject.name);
+
+        }
     }
 
     // Esc 메서드
+    #region ESC
     private void Esc()
     {
         // Esc 버튼이 눌렸을 때
@@ -93,8 +105,25 @@ public class UIManager : MonoBehaviour
             escUI.gameObject.SetActive(false);
         }
     }
+    #endregion
+
+    // 오픈 행성 정보창 메서드
+    #region OpenPlanetState
+    private void OpenPlanetState()
+    {
+        // Tab키가 눌렸을 때
+        if (Input.GetKeyDown(KeyCode.Tab)) 
+        {
+            // isTab 바꿔주기
+            isTab = !isTab;
+        }
+        // isTab이 true일 때 planetStateUI 열기
+        planetStateUI.gameObject.SetActive(isTab);
+    }
+    #endregion
 
     // 인벤토리 선택 메서드
+    #region SelectInventory
     public void SelectInventory(int _index)
     {
         if (!buildUI.isBuild)
@@ -108,8 +137,10 @@ public class UIManager : MonoBehaviour
             buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[_index].transform.position;
         }
     }
+    #endregion
 
     // 인벤 <-> 건설 창 변경 메서드
+    #region ChangeBuildMode
     private void ChangeBuildMode()
     {
         if (Input.GetKeyDown(KeyCode.B) && buildUI.isBuild == false)
@@ -133,4 +164,38 @@ public class UIManager : MonoBehaviour
             buildUI.buttons[1].gameObject.SetActive(false);
         }
     }
+    #endregion
+
+    // 행성 상태 체크 메서드
+    #region PlanetStateCheck
+    private void PlanetStateCheck()
+    {
+        planetStateUI.planetStateTexts[1].text = "기온 : " + planetManager.temperature + "ºC";
+        planetStateUI.planetStateTexts[2].text = "행성 내 산소량 : " + planetManager.oxygenLevel + "%";
+        if (planetManager.isWater)
+        {
+            planetStateUI.planetStateTexts[3].text = "행성 내 사용 가능한 물 존재 : O";
+        }
+        else
+        {
+            planetStateUI.planetStateTexts[3].text = "행성 내 사용 가능한 물 존재 : X";
+        }
+        planetStateUI.planetStateTexts[4].text = "토지 정화도 : " + planetManager.landLevel + "단계(MAX 5 단계)";
+    }
+    #endregion
+
+    // 플레이어 상태 UI 표시 메서드
+    #region VisiblePlayerStateUI
+    private void VisiblePlayerStateUI()
+    {
+        playerStateUI.hpBarImage.fillAmount = playerState.playerHpUI;
+        playerStateUI.fullBarImage.fillAmount = playerState.playerFullUI;
+        playerStateUI.waterBarImage.fillAmount = playerState.playerWaterUI;
+        playerStateUI.oxygenBarImage.fillAmount = playerState.playerOxygenUI;
+
+        playerStateUI.fullText.text = playerState.playerFullUI * 100 + "%";
+        playerStateUI.waterText.text = playerState.playerWaterUI * 100 + "%";
+        playerStateUI.oxygenText.text = playerState.playerOxygenUI * 100 + "%";
+    }
+    #endregion
 }
