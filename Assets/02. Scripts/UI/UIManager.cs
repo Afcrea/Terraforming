@@ -208,7 +208,7 @@ public class UIManager : MonoBehaviour
         {
             planetStateUI.planetStateTexts[3].text = "행성 내 사용 가능한 물 존재 : X";
         }
-        planetStateUI.planetStateTexts[4].text = "토지 정화도 : " + planetManager.landLevel + "단계(MAX 5 단계)";
+        planetStateUI.planetStateTexts[4].text = "토지 정화도 : " + planetManager.LandLevel + "단계(MAX 5 단계)";
     }
     #endregion
 
