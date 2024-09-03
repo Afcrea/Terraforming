@@ -6483,7 +6483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCurrHp: 10
   playerHpUI: 1
-  playerCurrFull: 50
+  playerCurrFull: 100
   playerFullUI: 1
   playerCurrWater: 100
   playerWaterUI: 1
@@ -24842,8 +24842,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   temperature: 0
   oxygenLevel: 0
-  landLevel: 1
   isWater: 0
+  growthSpeed: 0
 --- !u!4 &2477915427316609907
 Transform:
   m_ObjectHideFlags: 0
