@@ -13,34 +13,8 @@ public class PlayerItem : MonoBehaviour
 
     public int idx;
 
-    private void Awake()
-    {
-        itemManager = FindObjectOfType<ItemManager>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        seedPrefabs = Resources.Load<GameObject>("Prefabs/Seed");
-        seedlingPrefabs = Resources.Load<GameObject>("Prefabs/Seedling");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void Checkitem1()
-    {
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-        }
-    }
-
     void OnUseItem()
     {
-
         // 아이템 리스트의 크기를 오버해서 인덱스가 선택된 경우
         if(ItemManager.Instance.itemList.Count < idx+1)
         {
@@ -53,12 +27,7 @@ public class PlayerItem : MonoBehaviour
             return;
         }
 
-        itemManager.itemList[idx].GetComponent<IItem>().UseItem(idx);
-    }
-
-    public void currItem()
-    {
-        
+        ItemManager.Instance.itemList[idx].GetComponent<IItem>().UseItem(idx);
     }
 
     private void OnTriggerEnter(Collider other)

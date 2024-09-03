@@ -6759,6 +6759,10 @@ MonoBehaviour:
   bulidObjects:
   - {fileID: 100000, guid: 2e84254e724026a4896499600487a750, type: 3}
   - {fileID: 100000, guid: 1e38d79ff3b6e78458458f93c0a327db, type: 3}
+  - {fileID: 122154, guid: 3517d6179b17d7d41b2ab3881cb2cd67, type: 3}
+  - {fileID: 121710, guid: de147e9408aafd44da3a10d9b4fdc046, type: 3}
+  - {fileID: 195630, guid: 857b9bcf7311f5a49b829c4fd3cc791f, type: 3}
+  - {fileID: 133022, guid: 888614259d2d71142a4ba0b538e54caf, type: 3}
   mainCamera: {fileID: 0}
   previewShader: {fileID: 2100000, guid: 8d5bc9352bb3bee45ae74825bc871eff, type: 2}
   rotationAngle: 15
