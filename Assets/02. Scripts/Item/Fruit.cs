@@ -7,7 +7,7 @@ public class Fruit : MonoBehaviour, IItem
 {
     private Transform playerTr;         //플레이어 위치 담아올 변수
     private float distance = 3f;        //자석 효과 시작할 플레이어와 오브젝트 사이 거리
-    private float magnetSpeed = 0.2f;   //자석 효과 속도
+    private float magnetSpeed = 1f;   //자석 효과 속도
 
     public Sprite inventoryImageSource;
 
@@ -29,7 +29,7 @@ public class Fruit : MonoBehaviour, IItem
         if (Vector3.Distance(this.transform.position, playerTr.position) < distance)
         {
             Vector3 magnetToPlayer = playerTr.position - this.transform.position;
-            transform.Translate(magnetToPlayer * magnetSpeed * Time.deltaTime, Space.Self);
+            transform.Translate(magnetToPlayer * magnetSpeed * Time.deltaTime , Space.Self);
         }
     }
 

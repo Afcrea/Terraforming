@@ -231,12 +231,32 @@ public class UIManager : MonoBehaviour
     #region Inventory Update Method
     public void AddInventoryUI(int idx, GameObject item)
     {
-        GetComponentInChildren<InventoryUI>().AddInventoryUIImage(idx, item);
+        InventoryUI inventoryUI = GetComponentInChildren<InventoryUI>();
+
+        // 건설 모드시엔 inventoryUI 비활성화 상태임 그래서 모든 오브젝트에서 검색하는 로직 추가
+        if (inventoryUI == null)
+        {
+            InventoryUI[] allComponents = Resources.FindObjectsOfTypeAll<InventoryUI>();
+
+            foreach (InventoryUI component in allComponents)
+            {
+                // 오브젝트가 비활성화된 상태인지 확인합니다.
+                if (!component.gameObject.activeInHierarchy)
+                {
+                    Debug.Log("비활성화된 오브젝트의 컴포넌트를 찾았습니다: " + component.gameObject.name);
+
+                    // 컴포넌트에서 함수를 호출합니다.
+                    inventoryUI = component;
+                }
+            }
+        }
+
+        inventoryUI?.AddInventoryUIImage(idx, item);
     }
 
     public void RemoveInventoryUI()
     {
-        GetComponentInChildren<InventoryUI>().RemoveInventoryUIImage();
+        GetComponentInChildren<InventoryUI>()?.RemoveInventoryUIImage();
     }
     #endregion
 }

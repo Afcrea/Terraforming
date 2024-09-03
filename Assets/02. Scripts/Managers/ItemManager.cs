@@ -39,6 +39,7 @@ public class ItemManager : MonoBehaviour
     private int woodCount = 0;
     private int seedlingCount = 0;
     private int seedCount = 0;
+    [SerializeField]
     private int fruitCount = 0;
 
     public int IronCount
