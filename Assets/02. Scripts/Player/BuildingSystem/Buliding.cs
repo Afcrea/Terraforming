@@ -147,7 +147,18 @@ public class Buliding : MonoBehaviour
         var renderer = previewObject.GetComponent<Renderer>();
         originalShader = renderer.material;
         renderer.material = previewShader;
-        previewObject.GetComponent<BoxCollider>().isTrigger = true;
+        BoxCollider box = previewObject.GetComponent<BoxCollider>();
+        //if(!box)
+        //{
+        //    previewObject.GetComponent<SphereCollider>().isTrigger = true;
+        //}
+        //else
+        //{
+        //    box.isTrigger = true;
+        //}
+
+        box.isTrigger = true;
+
         previewObject.AddComponent<PreviewCollision>();
     }
 
@@ -229,6 +240,7 @@ public class Buliding : MonoBehaviour
     {
         previewObject.GetComponent<BoxCollider>().isTrigger = false;
         previewObject.GetComponent<Renderer>().material = originalShader;
+
         // 미리보기 오브젝트의 위치에 실제 건물 생성
         GameObject newObject = Instantiate(buildingPrefab, previewObject.transform.position, previewObject.transform.rotation);
 

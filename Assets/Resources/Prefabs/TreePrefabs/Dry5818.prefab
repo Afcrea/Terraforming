@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 183618830174735753}
   - component: {fileID: 4991103275147046801}
   - component: {fileID: 3041257636136811202}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dry8873LOD004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8573358255810728463}
   - component: {fileID: 5799351995095213532}
   - component: {fileID: 3698775482794295992}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dry8873LOD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3935223407159301062}
   - component: {fileID: 2632751419602572559}
   - component: {fileID: 7444982636682905359}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dry5818
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 8148474520968560860}
   - component: {fileID: 2567760201322637194}
   - component: {fileID: 7406225674751895614}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dry5818
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGathering: 1
+  time: 0
 --- !u!136 &7406225674751895614
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -356,7 +357,7 @@ GameObject:
   - component: {fileID: 4308181290115445}
   - component: {fileID: 7143119302600421385}
   - component: {fileID: 1245062136109779354}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dry8873LOD003
   m_TagString: Untagged
   m_Icon: {fileID: 0}

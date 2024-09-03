@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerItem : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class PlayerItem : MonoBehaviour
     GameObject seedlingPrefabs = null;
 
     public int idx;
+
+    int plantLayer;
+
+    private void Start()
+    {
+        plantLayer = LayerMask.NameToLayer("PLANT");
+    }
 
     void OnUseItem()
     {

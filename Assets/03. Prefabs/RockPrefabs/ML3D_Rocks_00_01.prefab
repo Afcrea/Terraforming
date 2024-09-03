@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 106556212727596109}
   - component: {fileID: 8932410173518831066}
   - component: {fileID: -5704530095193199209}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ML3D_Rocks_00_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
