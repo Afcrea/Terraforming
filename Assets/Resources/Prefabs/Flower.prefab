@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5046923472385026507}
   - component: {fileID: 117584931431076918}
   - component: {fileID: 7208942937372415680}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGathering: 1
+  time: 0
 --- !u!135 &7208942937372415680
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -93,7 +94,7 @@ GameObject:
   - component: {fileID: 5046923472392013355}
   - component: {fileID: 5046923472395404811}
   - component: {fileID: 5046923472394306763}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

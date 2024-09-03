@@ -5,7 +5,12 @@ public class Selector : MonoBehaviour
 {
     public InputActionAsset inputActions;
 
+    public InputActionMap actionMap;
+
     private InputAction selectItemAction;
+    private InputAction holdItemUse;
+
+
 
     private int _selectedIndex;
 
@@ -31,7 +36,7 @@ public class Selector : MonoBehaviour
     void OnEnable()
     {
         // Action Map과 Action을 가져오기
-        var actionMap = inputActions.FindActionMap("Choose");
+        actionMap = inputActions.FindActionMap("Choose");
         selectItemAction = actionMap.FindAction("SelectItem");
 
         // 각 키에 대해 콜백 등록
@@ -46,6 +51,22 @@ public class Selector : MonoBehaviour
         // Action 비활성화 및 콜백 해제
         selectItemAction.Disable();
         selectItemAction.performed -= OnSelectItem;
+    }
+
+    void Ontestperformed(InputAction.CallbackContext context)
+    {
+        //print("performed" + context.time);
+    }
+
+    void OntestCancel(InputAction.CallbackContext context)
+    {
+        //print("cancel" + context.time);
+    }
+
+    void OntestStarted(InputAction.CallbackContext context)
+    {
+        print("started" + context.startTime);
+        print("started" + context.time);
     }
 
     private void OnSelectItem(InputAction.CallbackContext context)

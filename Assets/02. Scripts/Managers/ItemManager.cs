@@ -91,7 +91,7 @@ public class ItemManager : MonoBehaviour
     // 먹은 아이템 관리하기 위한 리스트
     public List<GameObject> itemList = null;
     public List<GameObject> iItemList = null;
-    int iItemCount = 10;
+    int itemCapacity = 10;
 
     private void Awake()
     {
@@ -128,12 +128,12 @@ public class ItemManager : MonoBehaviour
         playerTr = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
         //혹은 플레이어가 Ray Sphere 뿌려서 바닥과 맞닿은 지점 하나 추출해서 그 위치값 받아서 생성 => 비탈길에 심기 가능
 
-        for(int i = 0; i < iItemCount; i++)
+        for(int i = 0; i < itemCapacity; i++)
         {
             itemList.Add(null);
         }
-
-        AddItemList(axePrefab);
+        
+        AddItemList(FindObjectOfType<Axe>().gameObject);
         AddItemList(pickaxePrefab);
     }
 
