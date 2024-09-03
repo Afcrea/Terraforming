@@ -7,6 +7,7 @@ public class OxyMaker : MonoBehaviour, IInteractable, IDemolish
 {
     private ItemManager itemManager = null;
     private PlayerState playerState = null;
+    private PlanetManager planetManager = null;
 
     private void Awake()
     {
@@ -23,9 +24,21 @@ public class OxyMaker : MonoBehaviour, IInteractable, IDemolish
         {
             Debug.LogError("PlayerState is not found in the scene.");
         }
+
+        //씬에서 PlanetManager 찾아오기
+        planetManager = FindObjectOfType<PlanetManager>();
+        if (planetManager == null)
+        {
+            Debug.LogError("PlanetManager is not found in the scene.");
+        }
     }
 
-    //상호작용으로 플레이어 산소량 풀충전
+    private void Start()
+    {
+        StartCoroutine(MakeOxygen());
+    }
+
+    //플레이어와 상호작용으로 플레이어 산소량 풀충전
     public void Interact()
     {
         playerState.PlayerCurrOxygen = playerState.PlayerInitOxygen;
@@ -40,5 +53,17 @@ public class OxyMaker : MonoBehaviour, IInteractable, IDemolish
         itemManager.StoneCount += 20;
 
         Destroy(this.gameObject);
+    }
+
+    //산소 정화
+    private IEnumerator MakeOxygen()
+    {
+        while (this.gameObject)
+        {
+            //산소 생성기 => 15초 마다 산소 + 1
+            yield return new WaitForSeconds(15f);
+            planetManager.oxygenLevel += 1f;
+            //Debug.Log("산소생성기가 만드는 중");
+        }
     }
 }

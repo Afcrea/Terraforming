@@ -6,6 +6,7 @@ using UnityEngine;
 public class SoilPuri : MonoBehaviour, IDemolish
 {
     private ItemManager itemManager = null;
+    private PlanetManager planetManager = null;
 
     private void Awake()
     {
@@ -15,9 +16,20 @@ public class SoilPuri : MonoBehaviour, IDemolish
         {
             Debug.LogError("ItemManager is not found in the scene.");
         }
+
+        //씬에서 PlanetManager 찾아오기
+        planetManager = FindObjectOfType<PlanetManager>();
+        if (planetManager == null)
+        {
+            Debug.LogError("PlanetManager is not found in the scene.");
+        }
     }
 
-    //★1개당 땅의 오염도를 1씩 낮춰줌 => 맵 환경에서 오염도 가져와서 낮추기
+    private void Start()
+    {
+        //건물 생길 때마다 레벨 올리기
+        planetManager.LandLevel++;
+    }
 
     //건물 부수고 다시 재료 반환하는 함수 - IDemolish 인터페이스
     public void Demolish()
@@ -26,6 +38,13 @@ public class SoilPuri : MonoBehaviour, IDemolish
         itemManager.StoneCount += 20;
         itemManager.IronCount += 20;
 
+        //건물 부수기
         Destroy(this.gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        //레벨 낮추기
+        planetManager.LandLevel--;
     }
 }

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 401080}
   - component: {fileID: 3399876}
   - component: {fileID: 2362938}
-  - component: {fileID: 13528154}
   - component: {fileID: 1578175507637968346}
+  - component: {fileID: 4037156250031384133}
   m_Layer: 0
   m_Name: WaterMaker
   m_TagString: Untagged
@@ -85,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &13528154
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121710}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.980785
-  m_Center: {x: -0.00000017881393, y: 1, z: 0.0000005364418}
 --- !u!114 &1578175507637968346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,3 +97,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed024b838118884eb6fa568a524b626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &4037156250031384133
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121710}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.84, y: 1.62, z: 1.88}
+  m_Center: {x: -0.00000017881393, y: 0.83, z: 0.0000005364418}

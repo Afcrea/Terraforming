@@ -16,12 +16,19 @@ public class PlanetManager : MonoBehaviour
     // 행성 내 산소량
     [HideInInspector]
     public float oxygenLevel = 0f;
+
     // 토지 레벨
-    [HideInInspector]
-    public int landLevel = 1;
+    //[SerializeField]        //테스트
+    private int landLevel = 0;
+    public int LandLevel { get => landLevel; set => landLevel = value; }
+
     // 행성의 물 존재 여부
     [HideInInspector]
-    public bool isWater = false; 
+    public bool isWater = false;
+
+    //성장 속도 변화 변수
+    [HideInInspector]
+    public float growthSpeed = 0;
 
     // 날씨 관련 오브젝트 가져오기
     Rain rain = null; // 비
@@ -62,9 +69,8 @@ public class PlanetManager : MonoBehaviour
     private void Update()
     {
         ChangeTemperature();
-        ChangeLandLevel();
-        ChangeOxygen();
         PlanetWeather();
+        GrowthSpeed();
     }
 
     // 빛 회전(시간 변경) 코루틴
@@ -139,15 +145,35 @@ public class PlanetManager : MonoBehaviour
         // 물 존재, 토지 정화도에 따라 온도 변화 -> 20도 정도로 바뀌게
     }
 
-    // 토지 정화도 변화 메서드
-    private void ChangeLandLevel()
+    private void GrowthSpeed()
     {
-        // 토지 정화기 1개당 정화도 1 증가
-    }
-
-    // 행성 산소량 변화 메서드
-    private void ChangeOxygen()
-    {
-        // 산소 생성기 존재 후 15초 마다 산소 1씩 증가
+        if (landLevel < 0)      //방어 코드
+        {
+            Debug.LogError("Check LandLevel!");
+        }
+        else
+        {
+            switch (landLevel)
+            {
+                case 0:
+                    growthSpeed = 0.000001f;
+                    break;
+                case 1:
+                    growthSpeed = 0.001f;
+                    break;
+                case 2:
+                    growthSpeed = 0.1f;
+                    break;
+                case 3:
+                    growthSpeed = 1f;
+                    break;
+                case 4:
+                    growthSpeed = 5f;
+                    break;
+                default:        //5 이상
+                    growthSpeed = 10f;
+                    break;
+            }
+        }
     }
 }
