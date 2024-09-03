@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 494562}
   - component: {fileID: 20525358}
-  - component: {fileID: -1306819895214629535}
   - component: {fileID: 6717298612103510040}
+  - component: {fileID: 849041944}
   m_Layer: 0
   m_Name: OxyMaker
   m_TagString: Untagged
@@ -63,19 +63,6 @@ LODGroup:
     - renderer: {fileID: 2352496}
     - renderer: {fileID: 2322174}
   m_Enabled: 1
---- !u!135 &-1306819895214629535
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122154}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.41
-  m_Center: {x: 0, y: 2.06, z: 0}
 --- !u!114 &6717298612103510040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +75,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65616a2e2841b854091317de14837eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &849041944
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.22, y: 3.85, z: 5.22}
+  m_Center: {x: 0, y: 1.93, z: 0}
 --- !u!1 &126148
 GameObject:
   m_ObjectHideFlags: 0
