@@ -56,8 +56,10 @@ public class Buliding : MonoBehaviour
 
     private void Awake()
     {
-        GameObject wallGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/blank_wall_A");
-        GameObject floorGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/floor_1");
+        bulidObjects = new List<GameObject>();
+
+        GameObject wallGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/Wall");
+        GameObject floorGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/Floor");
         GameObject oxyMakerGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/OxyMaker");
         GameObject waterMakerGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/WaterMaker");
         GameObject waterSupplierGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/WaterSupplier");
