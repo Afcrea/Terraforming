@@ -3,18 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //물 생성기
-public class WaterMaker : MonoBehaviour, IDemolish
+public class WaterMaker : MonoBehaviour, IDemolish, IBuildable
 {
-    private ItemManager itemManager = null;
-
     private void Awake()
     {
-        //씬에서 ItemManager 찾아오기
-        itemManager = FindObjectOfType<ItemManager>();
-        if (itemManager == null)
-        {
-            Debug.LogError("ItemManager is not found in the scene.");
-        }
     }
 
     //★ 맵에 물 생성 => ?
@@ -24,9 +16,21 @@ public class WaterMaker : MonoBehaviour, IDemolish
     public void Demolish()
     {
         //물 생성기: 돌 20개 철 20개
-        itemManager.StoneCount += 20;
-        itemManager.IronCount += 20;
+        ItemManager.Instance.StoneCount += 20;
+        ItemManager.Instance.IronCount += 20;
 
         Destroy(this.gameObject);
+    }
+
+    public bool BuildEnable()
+    {
+        if (ItemManager.Instance.StoneCount >= 20 && ItemManager.Instance.IronCount >= 20)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

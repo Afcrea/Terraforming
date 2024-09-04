@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //토양정화기
-public class SoilPuri : MonoBehaviour, IDemolish
+public class SoilPuri : MonoBehaviour, IDemolish, IBuildable
 {
-    private ItemManager itemManager = null;
     private PlanetManager planetManager = null;
 
     private void Awake()
     {
-        //씬에서 ItemManager 찾아오기
-        itemManager = FindObjectOfType<ItemManager>();
-        if (itemManager == null)
-        {
-            Debug.LogError("ItemManager is not found in the scene.");
-        }
-
         //씬에서 PlanetManager 찾아오기
         planetManager = FindObjectOfType<PlanetManager>();
         if (planetManager == null)
@@ -35,8 +27,8 @@ public class SoilPuri : MonoBehaviour, IDemolish
     public void Demolish()
     {
         //토양정화기: 돌 20개 철 20개
-        itemManager.StoneCount += 20;
-        itemManager.IronCount += 20;
+        ItemManager.Instance.StoneCount += 20;
+        ItemManager.Instance.IronCount += 20;
 
         //건물 부수기
         Destroy(this.gameObject);
@@ -46,5 +38,18 @@ public class SoilPuri : MonoBehaviour, IDemolish
     {
         //레벨 낮추기
         planetManager.LandLevel--;
+    }
+
+
+    public bool BuildEnable()
+    {
+        if (ItemManager.Instance.StoneCount >= 20 && ItemManager.Instance.IronCount >= 20)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

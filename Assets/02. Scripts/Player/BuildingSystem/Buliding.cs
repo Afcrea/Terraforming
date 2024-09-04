@@ -12,7 +12,8 @@ public class Buliding : MonoBehaviour
         get { return _isBuilding; }
     }
 
-    public List<GameObject> bulidObjects;
+    [SerializeField]
+    private List<GameObject> bulidObjects = null;
 
     ThirdPersonController ThirdPersonController;
 
@@ -47,10 +48,28 @@ public class Buliding : MonoBehaviour
 
     bool prevBuildEnable = false;
     bool buildEnable = false;
+    bool buildCostEnable = false;
 
     [Tooltip("건설 오브젝트 돌릴 각도")]
     public float rotationAngle = 15f;
     float rotation;
+
+    private void Awake()
+    {
+        GameObject wallGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/blank_wall_A");
+        GameObject floorGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/floor_1");
+        GameObject oxyMakerGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/OxyMaker");
+        GameObject waterMakerGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/WaterMaker");
+        GameObject waterSupplierGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/WaterSupplier");
+        GameObject soilPuriGameObject = Resources.Load<GameObject>("Prefabs/BuildingSystem/SoilPuri");
+
+        bulidObjects.Add(wallGameObject);
+        bulidObjects.Add(floorGameObject);
+        bulidObjects.Add(oxyMakerGameObject);
+        bulidObjects.Add(waterMakerGameObject);
+        bulidObjects.Add(waterSupplierGameObject);
+        bulidObjects.Add(soilPuriGameObject);
+    }
 
     void Start()
     {
@@ -105,8 +124,9 @@ public class Buliding : MonoBehaviour
         if (previewObject)
         {
             buildEnable = previewObject.GetComponent<PreviewCollision>().prewviewEnable;
+            buildCostEnable = previewObject.GetComponent<IBuildable>().BuildEnable();
 
-            if (buildEnable)
+            if (buildEnable && buildCostEnable)
             {
                 previewShader = previewEnableShader;
             }

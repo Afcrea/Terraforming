@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 2522748822216161346}
   - component: {fileID: 556537163430843006}
   m_Layer: 0
-  m_Name: SoilPuri
+  m_Name: SoilPuri1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
