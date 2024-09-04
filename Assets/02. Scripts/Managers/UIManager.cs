@@ -57,6 +57,7 @@ public class UIManager : MonoBehaviour
         OpenPlanetState();
         ChangeBuildMode();
         VisiblePlayerStateUI();
+        CostTextUI();
         PlanetStateCheck();
         BackLobbyUI();
     }
@@ -145,7 +146,7 @@ public class UIManager : MonoBehaviour
     private void OpenPlanetState()
     {
         // Tab키가 눌렸을 때
-        if (Input.GetKeyDown(KeyCode.Tab)) 
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             // isTab 바꿔주기
             isTab = !isTab;
@@ -240,6 +241,16 @@ public class UIManager : MonoBehaviour
         playerStateUI.fullText.text = playerState.playerFullUI * 100 + "%";
         playerStateUI.waterText.text = playerState.playerWaterUI * 100 + "%";
         playerStateUI.oxygenText.text = playerState.playerOxygenUI * 100 + "%";
+    }
+    #endregion
+
+    // 플레이어 코스트 UI 표시 메서드
+    #region Vislble Cost UI
+    private void CostTextUI()
+    {
+        costUI.costTexts[0].text = "돌 : " + ItemManager.Instance.StoneCount.ToString("00") + "개";
+        costUI.costTexts[1].text = "철 : " + ItemManager.Instance.IronCount.ToString("00") + "개";
+        costUI.costTexts[2].text = "목재 : " + ItemManager.Instance.WoodCount.ToString("00") + "개";
     }
     #endregion
 
