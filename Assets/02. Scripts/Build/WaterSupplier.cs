@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //급수기
-public class WaterSupplier : MonoBehaviour, IInteractable, IDemolish
+public class WaterSupplier : MonoBehaviour, IInteractable, IDemolish, IBuildable
 {
-    private ItemManager itemManager = null;
     private PlayerState playerState = null;
 
     private void Awake()
     {
-        //씬에서 ItemManager 찾아오기
-        itemManager = FindObjectOfType<ItemManager>();
-        if (itemManager == null)
-        {
-            Debug.LogError("ItemManager is not found in the scene.");
-        }
-
         //씬에서 PlayerState 찾기
         playerState = FindObjectOfType<PlayerState>();
         if (playerState == null)
@@ -35,9 +27,21 @@ public class WaterSupplier : MonoBehaviour, IInteractable, IDemolish
     //급수기: 돌 20개 철 10개
     public void Demolish()
     {
-        itemManager.StoneCount += 20;
-        itemManager.IronCount += 10;
+        ItemManager.Instance.StoneCount += 20;
+        ItemManager.Instance.IronCount += 10;
 
         Destroy(this.gameObject);
+    }
+
+    public bool BuildEnable()
+    {
+        if (ItemManager.Instance.StoneCount >= 20 && ItemManager.Instance.IronCount >= 10)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
