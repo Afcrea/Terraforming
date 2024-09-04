@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     ESCUI escUI = null;
     DieUI dieUI = null;
     InventoryUI inventoryUI = null;
+    BackLobbyUI backLobbyUI = null;
 
     // esc 버튼 눌렀는지 확인
     [HideInInspector]
@@ -57,6 +58,7 @@ public class UIManager : MonoBehaviour
         ChangeBuildMode();
         VisiblePlayerStateUI();
         PlanetStateCheck();
+        BackLobbyUI();
     }
 
     // UIManager Init 메서드
@@ -71,6 +73,7 @@ public class UIManager : MonoBehaviour
         costUI = GetComponentInChildren<CostUI>();
         inventoryUI = GetComponentInChildren<InventoryUI>();
         buildUI = GetComponentInChildren<BuildUI>();
+        backLobbyUI = GetComponentInChildren<BackLobbyUI>();
 
         planetManager = GameObject.FindGameObjectWithTag("PLANETMANAGER").GetComponent<PlanetManager>();
         playerInput = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<StarterAssetsInputs>();
@@ -90,6 +93,7 @@ public class UIManager : MonoBehaviour
         escUI.EscUIInit();
         dieUI.DieUiInit();
         dieUI.easterEggUI.EasterEggUIInit();
+        backLobbyUI.BackLobbyUIInit();
     }
     #endregion
 
@@ -101,6 +105,7 @@ public class UIManager : MonoBehaviour
         dieUI.gameObject.SetActive(false);
         dieUI.easterEggUI.gameObject.SetActive(false);
         planetStateUI.gameObject.SetActive(false);
+        backLobbyUI.gameObject.SetActive(false);
     }
     #endregion
 
@@ -209,6 +214,17 @@ public class UIManager : MonoBehaviour
             planetStateUI.planetStateTexts[3].text = "행성 내 사용 가능한 물 존재 : X";
         }
         planetStateUI.planetStateTexts[4].text = "토지 정화도 : " + planetManager.LandLevel + "단계(MAX 5 단계)";
+    }
+    #endregion
+
+    // 로켓에서 플레이어를 찾아서 플레이어가 근처에 있을 때만 UI 표시 메서드
+    #region Planet Scene To LobbyScene UI Method
+    private void BackLobbyUI()
+    {
+        // 로켓에서 플레이어를 찾는 메서드
+        backLobbyUI.Rocket.RocketFindPlayer();
+        // 텍스트를 표시할지 판단하는 메서드
+        backLobbyUI.OnOffBackLobbyText();
     }
     #endregion
 
