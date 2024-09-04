@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class Seedling : MonoBehaviour, IItem
 {
     private Transform playerTr;         //플레이어 위치 담아올 변수
@@ -58,13 +59,15 @@ public class Seedling : MonoBehaviour, IItem
         int num = Random.Range(0, ItemManager.Instance.treePrefabs.Length);
         GameObject treePrefab = ItemManager.Instance.treePrefabs[num];
 
-        Transform playerTransform = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
+        Transform playerPos = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
 
         //생성할 위치
-        Vector3 playerTran = playerTransform.forward * 1f;
+        Vector3 plantTr = new Vector3(playerPos.position.x + 2f,
+                                      playerPos.position.y,
+                                      playerPos.position.z + 2f);
 
         //심으면 원래 나무의 0.1크기로 생성하고 채집 가능 여부 false로 변경
-        GameObject go = Instantiate(treePrefab, playerTran, Quaternion.identity);
+        GameObject go = Instantiate(treePrefab, plantTr, Quaternion.identity);
         go.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         go.GetComponent<Tree>().isGathering = false;
 

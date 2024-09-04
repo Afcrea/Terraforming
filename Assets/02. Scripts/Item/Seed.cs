@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class Seed : MonoBehaviour, IItem
 {
     private Transform playerTr;         //플레이어 위치 담아올 변수
@@ -19,7 +20,6 @@ public class Seed : MonoBehaviour, IItem
 
     private void Awake()
     {
-
         playerTr = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();  //플레이어 태그로 위치 받아오기
     }
 
@@ -54,11 +54,12 @@ public class Seed : MonoBehaviour, IItem
     {
         ItemManager.Instance.SeedCount--;
 
-        Transform playerTransform = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
+        Transform playerPos = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
 
         //생성할 위치
-        Vector3 plantTr = playerTransform.forward * 5f;
-        
+        Vector3 plantTr = new Vector3(playerPos.position.x + 2f,
+                                      playerPos.position.y,
+                                      playerPos.position.z + 2f);
 
         //심으면 원래 나무의 0.1크기로 생성하고 채집 가능 여부 false로 변경
         GameObject go = Instantiate(ItemManager.Instance.flowerPrefab, plantTr, Quaternion.identity);
