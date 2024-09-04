@@ -223,7 +223,7 @@ public class Buliding : MonoBehaviour
             return;
         }
 
-        if (buildEnable)
+        if (buildEnable && buildCostEnable)
         {
             PlaceBuilding();
         }
