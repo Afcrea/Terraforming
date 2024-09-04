@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 public class Buliding : MonoBehaviour
 {
     private bool _isBuilding;
+    public bool isBuilding
+    {
+        get { return _isBuilding; }
+    }
 
     public List<GameObject> bulidObjects;
 
