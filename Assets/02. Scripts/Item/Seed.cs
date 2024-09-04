@@ -67,7 +67,7 @@ public class Seed : MonoBehaviour, IItem
 
         if (ItemManager.Instance.SeedCount == 0)
         {
-            ItemManager.Instance.RemoveItem(i);
+            ItemManager.Instance.RemoveItemList(i);
         }
     }
 }

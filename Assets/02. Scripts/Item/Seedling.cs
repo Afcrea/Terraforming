@@ -70,7 +70,7 @@ public class Seedling : MonoBehaviour, IItem
 
         if (ItemManager.Instance.SeedlingCount == 0)
         {
-            ItemManager.Instance.RemoveItem(i);
+            ItemManager.Instance.RemoveItemList(i);
         }
     }
 }

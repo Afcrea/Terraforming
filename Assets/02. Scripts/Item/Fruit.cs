@@ -64,7 +64,7 @@ public class Fruit : MonoBehaviour, IItem
 
         if(ItemManager.Instance.FruitCount == 0)
         {
-            ItemManager.Instance.RemoveItem(i);
+            ItemManager.Instance.RemoveItemList(i);
         }
     }
 

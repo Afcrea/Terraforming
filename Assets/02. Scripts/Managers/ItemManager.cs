@@ -78,6 +78,7 @@ public class ItemManager : MonoBehaviour
     public GameObject flowerPrefab = null;
     public GameObject axePrefab = null;
     public GameObject pickaxePrefab = null;
+    public GameObject handPrefab = null;
 
 
     //생성할 위치 파악하기 위한 변수
@@ -114,27 +115,27 @@ public class ItemManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        uiManager = FindObjectOfType<UIManager>();
-    }
-
-    private void Start()
-    {
         treePrefabs = Resources.LoadAll<GameObject>("Prefabs/TreePrefabs");
         flowerPrefab = Resources.Load<GameObject>("Prefabs/Flower");
         axePrefab = Resources.Load<GameObject>("Prefabs/Tools/Axe");
         pickaxePrefab = Resources.Load<GameObject>("Prefabs/Tools/PickAxe");
+        handPrefab = Resources.Load<GameObject>("Prefabs/Tools/Hand");
+
+        uiManager = FindObjectOfType<UIManager>();
+
+        for (int i = 0; i < itemCapacity; i++)
+        {
+            itemList.Add(null);
+        }
+    }
+
+    private void Start() 
+    { 
 
         //플레이어 위치 받아옴
         playerTr = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
         //혹은 플레이어가 Ray Sphere 뿌려서 바닥과 맞닿은 지점 하나 추출해서 그 위치값 받아서 생성 => 비탈길에 심기 가능
 
-        for(int i = 0; i < itemCapacity; i++)
-        {
-            itemList.Add(null);
-        }
-        
-        AddItemList(FindObjectOfType<Axe>().gameObject);
-        AddItemList(pickaxePrefab);
     }
 
     public void AddItemList(GameObject item)
@@ -154,7 +155,7 @@ public class ItemManager : MonoBehaviour
         uiManager.AddInventoryUI(idx, item);
     }
 
-    public void RemoveItem(int i)
+    public void RemoveItemList(int i)
     {
         itemList[i] = null;
         uiManager.RemoveInventoryUI();
