@@ -81,8 +81,8 @@ public class Tree : MonoBehaviour, IInteractable
             time += (Time.deltaTime * planetManager.growthSpeed);
         }
 
-        //다 컸으면 키우고 채집도 가능하게 해 
-        this.gameObject.transform.localScale = new Vector3(10f, 10f, 10f);
+        //다 컸으면 보통 크기로 키우고 채집도 가능하게 해 
+        this.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
         isGathering = true;
 
         yield return null;
