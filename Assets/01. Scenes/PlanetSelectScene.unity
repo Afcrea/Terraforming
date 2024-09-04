@@ -203,6 +203,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37325088}
   m_CullTransparentMesh: 1
+--- !u!1 &77235301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 77235302}
+  - component: {fileID: 77235303}
+  m_Layer: 0
+  m_Name: SelectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &77235302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77235301}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1347124943}
+  - {fileID: 449108385}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &77235303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77235301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586a47af78eb04f42948121e5df3e09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &342137945
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342137946}
+  - component: {fileID: 342137947}
   m_Layer: 5
   m_Name: PlanetDetails3
   m_TagString: DETAILPANEL
@@ -241,6 +288,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &342137947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342137945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a0bf75a701905438a0bad64681dc2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetailsButtons: []
 --- !u!1 &431271323
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +312,7 @@ GameObject:
   - component: {fileID: 431271324}
   - component: {fileID: 431271326}
   - component: {fileID: 431271325}
+  - component: {fileID: 431271327}
   m_Layer: 5
   m_Name: Panel_SelectPlanet
   m_TagString: SELECTPANEL
@@ -321,6 +382,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431271323}
   m_CullTransparentMesh: 1
+--- !u!114 &431271327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431271323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf232f6ed4c19cd4ca21fd704ce5f8f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectPlantButtons: []
 --- !u!1 &449108384
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +418,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449108384}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -352,8 +426,8 @@ Transform:
   - {fileID: 1594692026}
   - {fileID: 1881949716}
   - {fileID: 1779172373}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 77235302}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &469244502
 GameObject:
@@ -597,19 +671,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 569025488}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7319229690551769385}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: OnPlanetDetails
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &569025488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,7 +957,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7319229690551769385}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: StartPlanetScene
         m_Mode: 3
@@ -1029,7 +1091,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7319229690551769385}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: StartPlanetScene
         m_Mode: 3
@@ -1088,6 +1150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 992399488}
+  - component: {fileID: 992399489}
   m_Layer: 5
   m_Name: PlanetDetails2
   m_TagString: DETAILPANEL
@@ -1117,6 +1180,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &992399489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992399487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a0bf75a701905438a0bad64681dc2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetailsButtons: []
 --- !u!1 &998635299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,19 +1275,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 998635302}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7319229690551769385}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: OnPlanetDetails
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &998635302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1413,7 +1477,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7319229690551769385}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: StartPlanetScene
         m_Mode: 3
@@ -1549,6 +1613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1140305903}
   - component: {fileID: 1140305902}
+  - component: {fileID: 1140305904}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1633,6 +1698,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1140305904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140305901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1160301463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,7 +1885,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7319229690551769385}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: Back
         m_Mode: 1
@@ -2164,19 +2249,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1295617128}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7319229690551769385}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: OnPlanetDetails
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1295617128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2310,8 +2383,8 @@ RectTransform:
   m_Children:
   - {fileID: 431271324}
   - {fileID: 1691571139}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 77235302}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2671,6 +2744,7 @@ GameObject:
   - component: {fileID: 1691571139}
   - component: {fileID: 1691571141}
   - component: {fileID: 1691571140}
+  - component: {fileID: 1691571142}
   m_Layer: 5
   m_Name: Panel_PlanetDetails
   m_TagString: DETAILPANEL
@@ -2739,6 +2813,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691571138}
   m_CullTransparentMesh: 1
+--- !u!114 &1691571142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691571138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe5fd135df006b4a9b1fa48c07d0070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetDetails: []
 --- !u!1 &1746377458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,19 +3099,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1825210386}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7319229690551769385}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: BackLobbyScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1825210386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3147,7 +3222,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7319229690551769385}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: Back
         m_Mode: 1
@@ -3391,7 +3466,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7319229690551769385}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: Back
         m_Mode: 1
@@ -3450,6 +3525,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1944743045}
+  - component: {fileID: 1944743046}
   m_Layer: 5
   m_Name: PlanetDetails1
   m_TagString: DETAILPANEL
@@ -3479,6 +3555,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1944743046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944743044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a0bf75a701905438a0bad64681dc2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetailsButtons: []
 --- !u!1 &1946472506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3720,71 +3809,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102460014}
   m_CullTransparentMesh: 1
---- !u!1001 &7319229690551769384
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1677398355325202046, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_Name
-      value: SceneChanger
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1912627674732735284, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
---- !u!114 &7319229690551769385 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4173562928064477251, guid: 0bb51805dc9e66041938116e541826b0, type: 3}
-  m_PrefabInstance: {fileID: 7319229690551769384}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c7490f806d146c4cbcfe8bf483b6ce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
