@@ -24,7 +24,7 @@ public class ItemHandling : MonoBehaviour
 
         ItemManager.Instance.AddItemList(ItemManager.Instance.handPrefab);
         ItemManager.Instance.AddItemList(FindObjectOfType<Axe>().gameObject);
-        ItemManager.Instance.AddItemList(ItemManager.Instance.pickaxePrefab);
+        ItemManager.Instance.AddItemList(FindObjectOfType<PickAxe>().gameObject);
 
         Transform[] childColliders = GetComponentsInChildren<Transform>();
 
