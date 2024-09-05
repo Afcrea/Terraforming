@@ -91,7 +91,6 @@ public class ItemManager : MonoBehaviour
 
     // 먹은 아이템 관리하기 위한 리스트
     public List<GameObject> itemList = null;
-    public List<GameObject> iItemList = null;
     int itemCapacity = 10;
 
     private void Awake()

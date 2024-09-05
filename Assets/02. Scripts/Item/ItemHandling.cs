@@ -22,16 +22,21 @@ public class ItemHandling : MonoBehaviour
 
         building = FindObjectOfType<Building>();
 
-        ItemManager.Instance.AddItemList(ItemManager.Instance.handPrefab);
-        ItemManager.Instance.AddItemList(FindObjectOfType<Axe>().gameObject);
-        ItemManager.Instance.AddItemList(FindObjectOfType<PickAxe>().gameObject);
-
         Transform[] childColliders = GetComponentsInChildren<Transform>();
 
         print(childColliders.Length);
 
         axeObject = childColliders[axeIndex].gameObject;
         pickaxeObject = childColliders[pickaxeIndex].gameObject;
+
+        ItemManager.Instance.AddItemList(ItemManager.Instance.handPrefab);
+        ItemManager.Instance.AddItemList(axeObject);
+        ItemManager.Instance.AddItemList(pickaxeObject);
+
+        //axeObject.transform.position = new Vector3(0.00300361f, -0.038646f, -0.055682f);
+        //axeObject.transform.rotation = Quaternion.Euler(-32.153f, 95.295f, 116.526f);
+        //pickaxeObject.transform.position = new Vector3(0.102f, -0.183f, 0.283f);
+        //pickaxeObject.transform.rotation = Quaternion.Euler(-32.153f, 95.295f, 116.526f);
 
         axeObject.SetActive(false);
         pickaxeObject.SetActive(false);
