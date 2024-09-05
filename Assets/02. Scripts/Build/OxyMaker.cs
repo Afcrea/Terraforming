@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //산소생성기
-public class OxyMaker : MonoBehaviour, IInteractable, IDemolish, IBuildable
+public class OxyMaker : MonoBehaviour, IInteractable, IBuild
 {
     private PlayerState playerState = null;
     private PlanetManager planetManager = null;
@@ -70,5 +70,12 @@ public class OxyMaker : MonoBehaviour, IInteractable, IDemolish, IBuildable
         {
             return false;
         }
+    }
+
+    public void BuildCost()
+    {
+        ItemManager.Instance.StoneCount -= 20;
+        ItemManager.Instance.IronCount -= 20;
+        ItemManager.Instance.WoodCount -= 20;
     }
 }

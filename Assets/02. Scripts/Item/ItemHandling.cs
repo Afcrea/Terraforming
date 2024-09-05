@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemHandling : MonoBehaviour
 {
     Selector selector;
-    Buliding buliding;
+    Building building;
 
     int axeIndex = 1;
     int pickaxeIndex = 2;
@@ -20,7 +20,7 @@ public class ItemHandling : MonoBehaviour
     {
         selector = FindObjectOfType<Selector>();
 
-        buliding = FindObjectOfType<Buliding>();
+        building = FindObjectOfType<Building>();
 
         ItemManager.Instance.AddItemList(ItemManager.Instance.handPrefab);
         ItemManager.Instance.AddItemList(FindObjectOfType<Axe>().gameObject);
@@ -40,7 +40,7 @@ public class ItemHandling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(buliding.isBuilding)
+        if(building.isBuilding)
         {
             axeObject.SetActive(false);
             pickaxeObject.SetActive(false);

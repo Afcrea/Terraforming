@@ -135,7 +135,9 @@ public class ItemManager : MonoBehaviour
         //플레이어 위치 받아옴
         playerTr = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
         //혹은 플레이어가 Ray Sphere 뿌려서 바닥과 맞닿은 지점 하나 추출해서 그 위치값 받아서 생성 => 비탈길에 심기 가능
-
+        stoneCount = 100;
+        ironCount = 100;
+        woodCount = 100;
     }
 
     public void AddItemList(GameObject item)
