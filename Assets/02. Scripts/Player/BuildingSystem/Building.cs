@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Buliding : MonoBehaviour
+public class Building : MonoBehaviour
 {
     private bool _isBuilding;
     public bool isBuilding
@@ -126,7 +126,7 @@ public class Buliding : MonoBehaviour
         if (previewObject)
         {
             buildEnable = previewObject.GetComponent<PreviewCollision>().prewviewEnable;
-            buildCostEnable = previewObject.GetComponent<IBuildable>().BuildEnable();
+            buildCostEnable = previewObject.GetComponent<IBuild>().BuildEnable();
 
             if (buildEnable && buildCostEnable)
             {
@@ -235,7 +235,7 @@ public class Buliding : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out RaycastHit hitinfo, 50f, 1 << buildObjLayer))
         {
-            Destroy(hitinfo.collider.gameObject);
+            hitinfo.collider.gameObject.GetComponent<IBuild>().Demolish();
         }
     }
 
@@ -267,6 +267,7 @@ public class Buliding : MonoBehaviour
         previewObject.GetComponent<BoxCollider>().isTrigger = false;
         previewObject.GetComponent<Renderer>().material = originalShader;
 
+        previewObject.GetComponent<IBuild>().BuildCost();
         // 미리보기 오브젝트의 위치에 실제 건물 생성
         GameObject newObject = Instantiate(buildingPrefab, previewObject.transform.position, previewObject.transform.rotation);
 

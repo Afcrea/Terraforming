@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //물 생성기
-public class WaterMaker : MonoBehaviour, IDemolish, IBuildable
+public class WaterMaker : MonoBehaviour, IBuild
 {
     private void Awake()
     {
@@ -32,5 +32,10 @@ public class WaterMaker : MonoBehaviour, IDemolish, IBuildable
         {
             return false;
         }
+    }
+    public void BuildCost()
+    {
+        ItemManager.Instance.StoneCount -= 20;
+        ItemManager.Instance.IronCount -= 20;
     }
 }

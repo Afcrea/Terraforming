@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //토양정화기
-public class SoilPuri : MonoBehaviour, IDemolish, IBuildable
+public class SoilPuri : MonoBehaviour, IBuild
 {
     private PlanetManager planetManager = null;
 
@@ -51,5 +51,11 @@ public class SoilPuri : MonoBehaviour, IDemolish, IBuildable
         {
             return false;
         }
+    }
+
+    public void BuildCost()
+    {
+        ItemManager.Instance.StoneCount -= 20;
+        ItemManager.Instance.IronCount -= 20;
     }
 }

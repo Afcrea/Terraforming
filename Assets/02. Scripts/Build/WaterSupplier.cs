@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //±Þ¼ö±â
-public class WaterSupplier : MonoBehaviour, IInteractable, IDemolish, IBuildable
+public class WaterSupplier : MonoBehaviour, IInteractable, IBuild
 {
     private PlayerState playerState = null;
 
@@ -43,5 +43,11 @@ public class WaterSupplier : MonoBehaviour, IInteractable, IDemolish, IBuildable
         {
             return false;
         }
+    }
+
+    public void BuildCost()
+    {
+        ItemManager.Instance.StoneCount -= 20;
+        ItemManager.Instance.IronCount -= 10;
     }
 }
