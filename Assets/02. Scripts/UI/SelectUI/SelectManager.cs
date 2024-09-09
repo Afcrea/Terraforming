@@ -20,6 +20,9 @@ public class SelectManager : MonoBehaviour
         SelectManagerUIInit();
 
         OffUI();
+
+        // 마우스 커서 Lock 해제
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void SelectManagerUIInit()

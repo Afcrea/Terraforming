@@ -23,6 +23,9 @@ public class StartManager : MonoBehaviour
         buttons[0].onClick.AddListener(ContinueGame); // Continue Game Button
         buttons[1].onClick.AddListener(NewGame);      // New Game Button
         buttons[2].onClick.AddListener(QuitGame);     // Quit Game Button
+
+        // 마우스 커서 Lock 해제
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Start()

@@ -27,6 +27,9 @@ public class ScreenUI : MonoBehaviour
 
         // 버튼에 행성 선택 씬으로 이동하는 메서드 매핑
         screenButton.onClick.AddListener(GoSelectPlanetScene);
+
+        // 마우스 커서 Lock
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
