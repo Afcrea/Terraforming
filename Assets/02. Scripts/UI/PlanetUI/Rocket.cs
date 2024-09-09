@@ -12,7 +12,7 @@ public class Rocket : MonoBehaviour
     // 플레이어를 찾았는지 판단하는 변수
     bool isFindPlayer = false;
     // 플레이어 레이어 마스크 저장 변수
-    int playerLayerMask = 1 << 8;
+    int playerLayerMask = 1 << 6;
 
     // Planet Scene에서 Lobby Scene으로 이동하는 메서드
     public void PlanetToLobby()

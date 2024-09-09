@@ -13,7 +13,7 @@ public class ScreenUI : MonoBehaviour
     // 플레이어를 찾을 범위
     float findRange = 5f;
     // 플레이어 레이어 마스크
-    int playerLayerMask = 1 << 8;
+    int playerLayerMask = 1 << 6;
     // 플레이어를 찾았는지 판단할 bool 변수
     bool isFind = false;
 
