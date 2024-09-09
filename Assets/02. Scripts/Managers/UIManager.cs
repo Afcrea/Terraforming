@@ -128,6 +128,8 @@ public class UIManager : MonoBehaviour
         {
             // 게임 정지
             Time.timeScale = 0f;
+            // 마우스 커서 활성화
+            Cursor.lockState = CursorLockMode.None;
             // esc창 활성화
             escUI.gameObject.SetActive(true);
         }
@@ -135,6 +137,8 @@ public class UIManager : MonoBehaviour
         {
             // 게임 실행
             Time.timeScale = 1.0f;
+            // 마우스 커서 비활성화
+            Cursor.lockState = CursorLockMode.Locked;
             // esc창 비활성화
             escUI.gameObject.SetActive(false);
         }
