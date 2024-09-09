@@ -7,9 +7,7 @@ using UnityEngine.UIElements;
 public class ItemManager : MonoBehaviour
 {
     private ItemManager() { }
-
     private static ItemManager _instance;
-
     private static readonly object _lock = new object();
 
     public static ItemManager Instance
@@ -39,8 +37,10 @@ public class ItemManager : MonoBehaviour
     private int woodCount = 0;
     private int seedlingCount = 0;
     private int seedCount = 0;
-    [SerializeField]
     private int fruitCount = 0;
+
+    //맵 내 물 생성기 개수 파악 변수
+    public int waterMakerCnt = 0;
 
     public int IronCount
     {
@@ -74,11 +74,11 @@ public class ItemManager : MonoBehaviour
     }
 
     //심기 위한 프리팹 저장 변수
-    public GameObject[] treePrefabs = null;
-    public GameObject flowerPrefab = null;
-    public GameObject axePrefab = null;
-    public GameObject pickaxePrefab = null;
-    public GameObject handPrefab = null;
+    [HideInInspector] public GameObject[] treePrefabs = null;
+    [HideInInspector] public GameObject flowerPrefab = null;
+    [HideInInspector] public GameObject axePrefab = null;
+    [HideInInspector] public GameObject pickaxePrefab = null;
+    [HideInInspector] public GameObject handPrefab = null;
 
 
     //생성할 위치 파악하기 위한 변수
@@ -128,15 +128,10 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    private void Start() 
-    { 
-
+    private void Start()
+    {
         //플레이어 위치 받아옴
         playerTr = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
-        //혹은 플레이어가 Ray Sphere 뿌려서 바닥과 맞닿은 지점 하나 추출해서 그 위치값 받아서 생성 => 비탈길에 심기 가능
-        stoneCount = 100;
-        ironCount = 100;
-        woodCount = 100;
     }
 
     public void AddItemList(GameObject item)
@@ -144,7 +139,7 @@ public class ItemManager : MonoBehaviour
         int idx = 0;
         foreach (GameObject itemnull in itemList)
         {
-            if(itemnull == null)
+            if (itemnull == null)
             {
                 break;
             }
@@ -161,5 +156,4 @@ public class ItemManager : MonoBehaviour
         itemList[i] = null;
         uiManager.RemoveInventoryUI();
     }
-
 }

@@ -15,6 +15,7 @@ TagManager:
   - UIMANAGER
   - PLANETSTATEUI
   - PLANETMANAGER
+  - WATER
   layers:
   - Default
   - TransparentFX
