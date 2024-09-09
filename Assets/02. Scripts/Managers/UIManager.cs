@@ -60,6 +60,7 @@ public class UIManager : MonoBehaviour
         CostTextUI();
         PlanetStateCheck();
         BackLobbyUI();
+        PlayerDieUI();
     }
 
     // UIManager Init 메서드
@@ -114,33 +115,51 @@ public class UIManager : MonoBehaviour
     #region ESC
     private void Esc()
     {
-        // Esc 버튼이 눌렸을 때
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // 플레이어가 살아있을 때
+        if (playerState.PlayerAlive)
         {
-            // Esc 버튼이 눌릴 때마다 bool값 변경 ex) 한번 누르면 true, 두번 누르면 false
-            isEsc = !isEsc;
-            isPaused = !isPaused;
-            playerInput.isCameraMove = !playerInput.isCameraMove;
-        }
+            // Esc 버튼을 눌렀을 때
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                // Esc 버튼이 눌릴 때마다 bool값 변경 ex) 한번 누르면 true, 두번 누르면 false
+                isEsc = !isEsc;
+                isPaused = !isPaused;
+                playerInput.isCameraMove = !playerInput.isCameraMove;
+            }
 
-        // isEsc가 true면 
-        if (isEsc)
-        {
-            // 게임 정지
-            Time.timeScale = 0f;
-            // 마우스 커서 활성화
-            Cursor.lockState = CursorLockMode.None;
-            // esc창 활성화
-            escUI.gameObject.SetActive(true);
+            // isEsc가 true면 
+            if (isEsc)
+            {
+                // 게임 정지
+                Time.timeScale = 0f;
+                // 마우스 커서 활성화
+                Cursor.lockState = CursorLockMode.None;
+                // esc창 활성화
+                escUI.gameObject.SetActive(true);
+            }
+            else // isEsc가 false면
+            {
+                // 게임 실행
+                Time.timeScale = 1.0f;
+                // 마우스 커서 비활성화
+                Cursor.lockState = CursorLockMode.Locked;
+                // esc창 비활성화
+                escUI.gameObject.SetActive(false);
+            }
         }
-        else // isEsc가 false면
+    }
+    #endregion
+
+    // 플레이어 죽었을 때 표시할 Ui
+    #region Player Die UI
+    private void PlayerDieUI()
+    {
+        if (!playerState.PlayerAlive) // 플레이어가 죽었을 때
         {
-            // 게임 실행
-            Time.timeScale = 1.0f;
-            // 마우스 커서 비활성화
-            Cursor.lockState = CursorLockMode.Locked;
-            // esc창 비활성화
-            escUI.gameObject.SetActive(false);
+            // die ui 활성화
+            dieUI.gameObject.SetActive(!playerState.PlayerAlive);
+            // 커서 lock 해제
+            Cursor.lockState = CursorLockMode.None;
         }
     }
     #endregion
