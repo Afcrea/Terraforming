@@ -21,6 +21,7 @@ public class PlayerState : MonoBehaviour
     //플레이어 상태 속성값
     //플레이어 생존 여부 
     private bool playerAlive = true;
+    public bool PlayerAlive {  get { return playerAlive; } }
 
     //플레이어 체력 관련
     [SerializeField]
@@ -60,6 +61,14 @@ public class PlayerState : MonoBehaviour
     //플레이어 상태 변경 여부 판단
     private bool isWorse = false;       // 지금 체력 감소 중인지
     private bool isBetter = false;      // 지금 체력 회복 중인지
+
+    // 플레이어 애니메이터 가져오기
+    Animator animator = null;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -168,8 +177,13 @@ public class PlayerState : MonoBehaviour
     //플레이어 상태 체크
     private void PlayerStateChecker()
     {
+        //체력이 0 이하면 사망 상태
+        if (playerCurrHp <= 0)
+        {
+            playerStateCheck = PLAYERSTATECHECK.DIE;
+        }
         //속성들이 70 이상이면 체력 회복 상태
-        if (playerCurrFull >= 70 && playerCurrWater >= 70 && playerCurrOxygen >= 70)
+        else if (playerCurrFull >= 70 && playerCurrWater >= 70 && playerCurrOxygen >= 70)
         {
             playerStateCheck = PLAYERSTATECHECK.HEAL;
         }
@@ -177,11 +191,6 @@ public class PlayerState : MonoBehaviour
         else if (playerCurrFull <= 0 || playerCurrWater <= 0 || playerCurrOxygen <= 0)
         {
             playerStateCheck = PLAYERSTATECHECK.DAMAGE;
-        }
-        //체력이 0 이하면 사망 상태
-        else if (playerCurrHp <= 0)
-        {
-            playerStateCheck = PLAYERSTATECHECK.DIE;
         }
         //그게 아니라면 기본 상태
         else
@@ -214,6 +223,7 @@ public class PlayerState : MonoBehaviour
                 playerAlive = false;    //사망
                 isWorse = false;
                 isBetter = false;
+                animator.SetTrigger("IsDie");
                 break;
         }
     }
