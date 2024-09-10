@@ -14,8 +14,8 @@ public class PickAxe : MonoBehaviour, IItem
 
     int rockLayer;
 
-    bool pickaxeing;
-    bool pickaxeComplet;
+    bool pickaxeStart;
+    bool pickaxeDone;
 
     public void GetItem()
     {
@@ -24,7 +24,7 @@ public class PickAxe : MonoBehaviour, IItem
 
     public void UseItem(int i)
     {
-        pickaxeing = true;
+        pickaxeStart = true;
         StartCoroutine(PickaxeUse());
     }
 
@@ -42,7 +42,7 @@ public class PickAxe : MonoBehaviour, IItem
     private void OnEnable()
     {
         selector = FindObjectOfType<Selector>();
-        holdItemUse = selector.inputActions.FindActionMap("Choose").FindAction("test");
+        holdItemUse = selector.inputActions.FindActionMap("ItemUse").FindAction("HoldingTime");
 
         // 각 키에 대해 콜백 등록
         holdItemUse.performed += AxePerformed;
@@ -64,40 +64,39 @@ public class PickAxe : MonoBehaviour, IItem
 
     void AxeStarted(InputAction.CallbackContext context)
     {
-        pickaxeing = true;
-        pickaxeComplet = false;
+        pickaxeStart = true;
+        pickaxeDone = false;
     }
 
     void AxePerformed(InputAction.CallbackContext context)
     {
-        pickaxeing = false;
-        pickaxeComplet = true;
+        pickaxeStart = false;
+        pickaxeDone = true;
     }
 
     void AxeCanceled(InputAction.CallbackContext context)
     {
-        pickaxeing = false;
-        pickaxeComplet = false;
+        pickaxeStart = false;
+        pickaxeDone = false;
     }
 
     IEnumerator PickaxeUse()
     {
-        while (pickaxeing)
+        while (pickaxeStart)
         {
             yield return null;
         }
-        if (pickaxeComplet)
+        if (pickaxeDone)
         {
-            attack();
+            PickaxeUseConfirm();
         }
     }
 
-    public void attack()
+    void PickaxeUseConfirm()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hitinfo, 50f, 1 << rockLayer))
         {
-            print("123");
             hitinfo.collider.gameObject.GetComponent<IInteractable>()?.Interact();
         }
     }
