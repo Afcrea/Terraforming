@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - STARTBUTTON
+  - BACKBUTTON
+  - CinemachineTarget
+  - SCENEBUTTON
+  - DETAILPANEL
+  - SELECTPANEL
+  - PLANET
+  - PLAYER
+  - UIMANAGER
+  - PLANETSTATEUI
+  - PLANETMANAGER
+  - WATER
   layers:
   - Default
   - TransparentFX
@@ -11,12 +23,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PLAYER
+  - GROUND
+  - PREVIEW
+  - BUILDOBJ
+  - ROCK
+  - PLANT
   - 
   - 
   - 
