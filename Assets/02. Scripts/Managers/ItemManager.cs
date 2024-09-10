@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -132,11 +133,18 @@ public class ItemManager : MonoBehaviour
     {
         //플레이어 위치 받아옴
         playerTr = GameObject.FindWithTag("PLAYER").GetComponent<Transform>();
+
     }
 
     public void AddItemList(GameObject item)
     {
+        if(uiManager == null)
+        {
+            uiManager = FindObjectOfType<UIManager>();
+        }
+
         int idx = 0;
+
         foreach (GameObject itemnull in itemList)
         {
             if (itemnull == null)
@@ -153,6 +161,10 @@ public class ItemManager : MonoBehaviour
 
     public void RemoveItemList(int i)
     {
+        if (uiManager == null)
+        {
+            uiManager = FindObjectOfType<UIManager>();
+        }
         itemList[i] = null;
         uiManager.RemoveInventoryUI();
     }

@@ -38,43 +38,47 @@ public class PickAxe : MonoBehaviour, IItem
     {
         prefab = Resources.Load<GameObject>("Prefabs/Tools/PickAxe");
         rockLayer = LayerMask.NameToLayer("ROCK");
+        
     }
     private void OnEnable()
     {
         selector = FindObjectOfType<Selector>();
         holdItemUse = selector.inputActions.FindActionMap("ItemUse").FindAction("HoldingTime");
 
+        
+
         // 각 키에 대해 콜백 등록
-        holdItemUse.performed += AxePerformed;
-        holdItemUse.canceled += AxeCanceled;
-        holdItemUse.started += AxeStarted;
+        holdItemUse.performed += PickAxePerformed;
+        holdItemUse.canceled += PickAxeCanceled;
+        holdItemUse.started += PickAxeStarted;
 
         holdItemUse.Enable();
     }
+
 
     void OnDisable()
     {
         holdItemUse.Disable();
 
         // Action 비활성화 및 콜백 해제
-        holdItemUse.performed -= AxePerformed;
-        holdItemUse.canceled -= AxeCanceled;
-        holdItemUse.started -= AxeStarted;
+        holdItemUse.performed -= PickAxePerformed;
+        holdItemUse.canceled -= PickAxeCanceled;
+        holdItemUse.started -= PickAxeStarted;
     }
 
-    void AxeStarted(InputAction.CallbackContext context)
+    void PickAxeStarted(InputAction.CallbackContext context)
     {
         pickaxeStart = true;
         pickaxeDone = false;
     }
 
-    void AxePerformed(InputAction.CallbackContext context)
+    void PickAxePerformed(InputAction.CallbackContext context)
     {
         pickaxeStart = false;
         pickaxeDone = true;
     }
 
-    void AxeCanceled(InputAction.CallbackContext context)
+    void PickAxeCanceled(InputAction.CallbackContext context)
     {
         pickaxeStart = false;
         pickaxeDone = false;

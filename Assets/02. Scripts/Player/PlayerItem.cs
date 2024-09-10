@@ -12,7 +12,7 @@ public class PlayerItem : MonoBehaviour
     GameObject seedPrefabs = null;
     GameObject seedlingPrefabs = null;
 
-    public int idx;
+    public int idx = 0;
 
     int plantLayer;
 
@@ -23,8 +23,13 @@ public class PlayerItem : MonoBehaviour
 
     void OnUseItem()
     {
+        if (ItemManager.Instance == null)
+        {
+            return;
+        }
+
         // 아이템 리스트의 크기를 오버해서 인덱스가 선택된 경우
-        if(ItemManager.Instance.itemList.Count < idx+1)
+        if (ItemManager.Instance.itemList.Count < idx+1)
         {
             return; 
         }

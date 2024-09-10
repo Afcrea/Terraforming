@@ -21,7 +21,9 @@ public class Axe : MonoBehaviour, IItem
     {
         prefab = Resources.Load<GameObject>("Prefabs/Tools/Axe");
         plantLayer = LayerMask.NameToLayer("PLANT");
+
     }
+
 
     private void OnEnable()
     {
