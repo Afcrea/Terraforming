@@ -116,7 +116,7 @@ public class UIManager : MonoBehaviour
     private void Esc()
     {
         // 플레이어가 살아있을 때
-        if (playerState.PlayerAlive)
+        if (buildUI.isBuild == false && playerState.PlayerAlive)
         {
             // Esc 버튼을 눌렀을 때
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -204,21 +204,33 @@ public class UIManager : MonoBehaviour
         {
             // 건설 상태로 전환
             buildUI.isBuild = true;
+            // 인벤토리 off
             inventoryUI.gameObject.SetActive(false);
+            // 건설 창 on
             buildUI.buildInvenGroup.gameObject.SetActive(true);
+            // 텍스트 바꾸기
             buildUI.texts[1].text = "인벤토리";
             buildUI.texts[3].gameObject.SetActive(true);
+            // 파괴 버튼 off
             buildUI.buttons[1].gameObject.SetActive(true);
+            // 마우스 커서 활성화
+            Cursor.lockState = CursorLockMode.None;
         }
         else if (Input.GetKeyDown(KeyCode.B) && buildUI.isBuild == true)
         {
             // 인벤토리로 전환
             buildUI.isBuild = false;
+            // 건설 창 off
             buildUI.buildInvenGroup.gameObject.SetActive(false);
+            // 인벤토리 on
             inventoryUI.gameObject.SetActive(true);
+            // 텍스트 바꾸기
             buildUI.texts[1].text = "건설";
             buildUI.texts[3].gameObject.SetActive(false);
+            // 파괴 버튼 off
             buildUI.buttons[1].gameObject.SetActive(false);
+            // 마우스 커서 비활성화
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
     #endregion
