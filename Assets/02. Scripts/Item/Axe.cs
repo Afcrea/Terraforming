@@ -14,8 +14,8 @@ public class Axe : MonoBehaviour, IItem
 
     int plantLayer;
 
-    bool Axeing;
-    bool AxeComplet;
+    bool AxeStart;
+    bool AxeDone;
 
     void Start()
     {
@@ -23,16 +23,10 @@ public class Axe : MonoBehaviour, IItem
         plantLayer = LayerMask.NameToLayer("PLANT");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(Axeing + " // " + AxeComplet);
-    }
-
     private void OnEnable()
     {
         selector = FindObjectOfType<Selector>();
-        holdItemUse = selector.inputActions.FindActionMap("Choose").FindAction("test");
+        holdItemUse = selector.inputActions.FindActionMap("ItemUse").FindAction("HoldingTime");
 
         // 각 키에 대해 콜백 등록
         holdItemUse.performed += AxePerformed;
@@ -60,47 +54,45 @@ public class Axe : MonoBehaviour, IItem
     public void UseItem(int i)
     {
         //Debug.Log("Left Mouse Clicked");
-        Axeing = true;
+        AxeStart = true;
         StartCoroutine(AxeUse());
-        //attack();
     }
 
     void AxeStarted(InputAction.CallbackContext context)
     {
-        Axeing = true;
-        AxeComplet = false;
+        AxeStart = true;
+        AxeDone = false;
     }
 
     void AxePerformed(InputAction.CallbackContext context)
     {
-        Axeing = false;
-        AxeComplet = true;
+        AxeStart = false;
+        AxeDone = true;
     }
 
     void AxeCanceled(InputAction.CallbackContext context)
     {
-        Axeing = false;
-        AxeComplet = false;
+        AxeStart = false;
+        AxeDone = false;
     }
 
     IEnumerator AxeUse()
     {
-        while(Axeing)
+        while(AxeStart)
         {
             yield return null;
         }
-        if (AxeComplet)
+        if (AxeDone)
         {
-            attack();
+            AxeUseConfirm();
         }
     }
 
-    public void attack()
+    void AxeUseConfirm()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hitinfo, 50f, 1 << plantLayer))
         {
-            print("123");
             hitinfo.collider.gameObject.GetComponent<IInteractable>()?.Interact();
         }
     }

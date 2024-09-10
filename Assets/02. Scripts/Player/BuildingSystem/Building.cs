@@ -97,7 +97,7 @@ public class Building : MonoBehaviour
         }
         else
         {
-            Debug.Log("Material loaded successfully.");
+            //Debug.Log("Material loaded successfully.");
         }
 
         if (previewUnenableShader == null)
@@ -106,7 +106,7 @@ public class Building : MonoBehaviour
         }
         else
         {
-            Debug.Log("Material loaded successfully.");
+            //Debug.Log("Material loaded successfully.");
         }
     }
 
