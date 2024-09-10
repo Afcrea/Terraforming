@@ -297,7 +297,7 @@ public class UIManager : MonoBehaviour
                 // 오브젝트가 비활성화된 상태인지 확인합니다.
                 if (!component.gameObject.activeInHierarchy)
                 {
-                    Debug.Log("비활성화된 오브젝트의 컴포넌트를 찾았습니다: " + component.gameObject.name);
+                    //Debug.Log("비활성화된 오브젝트의 컴포넌트를 찾았습니다: " + component.gameObject.name);
 
                     // 컴포넌트에서 함수를 호출합니다.
                     inventoryUI = component;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemHandling : MonoBehaviour
 {
@@ -24,19 +25,41 @@ public class ItemHandling : MonoBehaviour
 
         Transform[] childColliders = GetComponentsInChildren<Transform>();
 
-        print(childColliders.Length);
-
         axeObject = childColliders[axeIndex].gameObject;
         pickaxeObject = childColliders[pickaxeIndex].gameObject;
 
-        ItemManager.Instance.AddItemList(ItemManager.Instance.handPrefab);
-        ItemManager.Instance.AddItemList(axeObject);
-        ItemManager.Instance.AddItemList(pickaxeObject);
+        if(ItemManager.Instance)
+        {
+            if (ItemManager.Instance && !ItemManager.Instance.itemList[0])
+            {
+                ItemManager.Instance.itemList[0] = ItemManager.Instance.handPrefab;
+            }
+            if (ItemManager.Instance && !ItemManager.Instance.itemList[1])
+            {
+                ItemManager.Instance.itemList[1] = axeObject;
+            }
+            if (!ItemManager.Instance.itemList[2])
+            {
+                ItemManager.Instance.itemList[2] = pickaxeObject;
+            }
 
-        //axeObject.transform.position = new Vector3(0.00300361f, -0.038646f, -0.055682f);
-        //axeObject.transform.rotation = Quaternion.Euler(-32.153f, 95.295f, 116.526f);
-        //pickaxeObject.transform.position = new Vector3(0.102f, -0.183f, 0.283f);
-        //pickaxeObject.transform.rotation = Quaternion.Euler(-32.153f, 95.295f, 116.526f);
+            
+            UIManager uiManager = FindObjectOfType<UIManager>();
+
+            if (uiManager != null)
+            {
+                int idx = 0;
+                foreach (GameObject item in ItemManager.Instance.itemList) 
+                {
+                    if (item == null)
+                    {
+                        continue;
+                    }
+                    uiManager.AddInventoryUI(idx, item);
+                    idx++;
+                }
+            }
+        }
 
         axeObject.SetActive(false);
         pickaxeObject.SetActive(false);

@@ -25,12 +25,13 @@ public class Selector : MonoBehaviour
 
     private void Awake()
     {
-        uiManager = GameObject.FindGameObjectWithTag("UIMANAGER").GetComponent<UIManager>();
+        uiManager = GameObject.FindGameObjectWithTag("UIMANAGER")?.GetComponent<UIManager>();
+        pitem = GetComponent<PlayerItem>();
     }
 
     private void Start()
     {
-        pitem = GetComponent<PlayerItem>();
+        
     }
 
     void OnEnable()
@@ -51,22 +52,6 @@ public class Selector : MonoBehaviour
         // Action 비활성화 및 콜백 해제
         selectItemAction.Disable();
         selectItemAction.performed -= OnSelectItem;
-    }
-
-    void Ontestperformed(InputAction.CallbackContext context)
-    {
-        //print("performed" + context.time);
-    }
-
-    void OntestCancel(InputAction.CallbackContext context)
-    {
-        //print("cancel" + context.time);
-    }
-
-    void OntestStarted(InputAction.CallbackContext context)
-    {
-        print("started" + context.startTime);
-        print("started" + context.time);
     }
 
     private void OnSelectItem(InputAction.CallbackContext context)
