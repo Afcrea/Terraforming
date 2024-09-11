@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlanetManager : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class PlanetManager : MonoBehaviour
     [HideInInspector]
     public float growthSpeed = 0;
 
+    // 행성 스탯 스크립터블 오브젝트 담을 변수 선언
+    public PlanetState[] planetStates = null;
+
     // 날씨 관련 오브젝트 가져오기
     Rain rain = null; // 비
     Snow snow = null; // 눈
@@ -42,6 +46,9 @@ public class PlanetManager : MonoBehaviour
 
     private void Awake()
     {
+        // 행성 스탯 가져오기
+        SetPlanetState();
+
         // 빛 오브젝트 가져오기
         lightMain = GetComponentInChildren<Light>();
 
@@ -174,6 +181,35 @@ public class PlanetManager : MonoBehaviour
                     growthSpeed = 10f;
                     break;
             }
+        }
+    }
+
+    // 각 씬 별로 행성 스탯 매핑
+    private void SetPlanetState()
+    {
+        // PlanetScene1
+        if (SceneManager.GetActiveScene().name == "PlanetScene1")
+        {
+            temperature = planetStates[0].temperature;
+            oxygenLevel = planetStates[0].oxyLevel;
+            landLevel = planetStates[0].landLevel;
+            isWater = planetStates[0].isWater;
+        }
+        // PlanetScene2
+        else if (SceneManager.GetActiveScene().name == "PlanetScene2")
+        {
+            temperature = planetStates[1].temperature;
+            oxygenLevel = planetStates[1].oxyLevel;
+            landLevel = planetStates[1].landLevel;
+            isWater = planetStates[1].isWater;
+        }
+        // PlanetScene3
+        else if (SceneManager.GetActiveScene().name == "PlanetScene3")
+        {
+            temperature = planetStates[2].temperature;
+            oxygenLevel = planetStates[2].oxyLevel;
+            landLevel = planetStates[2].landLevel;
+            isWater = planetStates[2].isWater;
         }
     }
 }

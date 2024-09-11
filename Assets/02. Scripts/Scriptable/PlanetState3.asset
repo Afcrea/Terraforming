@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ab6090dc6ebd645a1b55d2a085a226, type: 3}
   m_Name: PlanetState3
   m_EditorClassIdentifier: 
-  temperature: -20
+  temperature: -70
   oxyLevel: 0
   landLevel: 0
   isWater: 0
