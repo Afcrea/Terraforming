@@ -17,6 +17,11 @@ public class PickAxe : MonoBehaviour, IItem
     bool pickaxeStart;
     bool pickaxeDone;
 
+    float holdStartTime = 0f;
+    float holdDuration = 2.0f;
+
+    UIManager uiManager = null;
+
     public void GetItem()
     {
         // 기본 지급
@@ -24,8 +29,12 @@ public class PickAxe : MonoBehaviour, IItem
 
     public void UseItem(int i)
     {
-        pickaxeStart = true;
-        StartCoroutine(PickaxeUse());
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hitinfo, 10f, 1 << rockLayer))
+        {
+            pickaxeStart = true;
+            StartCoroutine(PickaxeUse());
+        }
     }
 
     public Sprite GetSprite()
@@ -38,14 +47,13 @@ public class PickAxe : MonoBehaviour, IItem
     {
         prefab = Resources.Load<GameObject>("Prefabs/Tools/PickAxe");
         rockLayer = LayerMask.NameToLayer("ROCK");
-        
     }
     private void OnEnable()
     {
+        uiManager = FindObjectOfType<UIManager>();
+
         selector = FindObjectOfType<Selector>();
         holdItemUse = selector.inputActions.FindActionMap("ItemUse").FindAction("HoldingTime");
-
-        
 
         // 각 키에 대해 콜백 등록
         holdItemUse.performed += PickAxePerformed;
@@ -68,18 +76,26 @@ public class PickAxe : MonoBehaviour, IItem
 
     void PickAxeStarted(InputAction.CallbackContext context)
     {
-        pickaxeStart = true;
-        pickaxeDone = false;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hitinfo, 10f, 1 << rockLayer))
+        {
+            holdStartTime = Time.time;
+            pickaxeStart = true;
+            pickaxeDone = false;
+        }
+        
     }
 
     void PickAxePerformed(InputAction.CallbackContext context)
     {
+        uiManager.pickaxeUI.gameObject.SetActive(false);
         pickaxeStart = false;
         pickaxeDone = true;
     }
 
     void PickAxeCanceled(InputAction.CallbackContext context)
     {
+        uiManager.pickaxeUI.gameObject.SetActive(false);
         pickaxeStart = false;
         pickaxeDone = false;
     }
@@ -88,6 +104,20 @@ public class PickAxe : MonoBehaviour, IItem
     {
         while (pickaxeStart)
         {
+            uiManager.pickaxeUI.gameObject.SetActive(true);
+
+            float holdTime = Time.time - holdStartTime;
+
+            print(holdTime);
+
+            uiManager.pickaxeUI.barOn.barProgress = Mathf.Clamp(holdTime / holdDuration, 0, 1);
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (!Physics.Raycast(ray, out RaycastHit hitinfo, 10f, 1 << rockLayer))
+            {
+                uiManager.pickaxeUI.gameObject.SetActive(false);
+                yield break;
+            }
             yield return null;
         }
         if (pickaxeDone)
@@ -99,7 +129,7 @@ public class PickAxe : MonoBehaviour, IItem
     void PickaxeUseConfirm()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hitinfo, 50f, 1 << rockLayer))
+        if (Physics.Raycast(ray, out RaycastHit hitinfo, 10f, 1 << rockLayer))
         {
             hitinfo.collider.gameObject.GetComponent<IInteractable>()?.Interact();
         }

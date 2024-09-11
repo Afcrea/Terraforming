@@ -47,6 +47,7 @@ public class Building : MonoBehaviour
     int prevIndex;
 
     bool prevBuildEnable = false;
+    bool prevBuildCostEnable = false;
     bool buildEnable = false;
     bool buildCostEnable = false;
 
@@ -137,11 +138,11 @@ public class Building : MonoBehaviour
                 previewShader = previewUnenableShader;
             }
 
-            if (prevBuildEnable != buildEnable)
+            if (prevBuildEnable != buildEnable || prevBuildCostEnable != buildCostEnable)
             {
                 BuildObjectChange();
             }
-
+            prevBuildCostEnable = buildCostEnable;
             prevBuildEnable = buildEnable;
         }
     }
@@ -251,16 +252,12 @@ public class Building : MonoBehaviour
     // 프리뷰 오브젝트의 메테리얼을 원상복구하여 생성하는 함수 // 건설 함수
     void PlaceBuilding()
     {
-        previewObject.GetComponent<BoxCollider>().isTrigger = false;
-        previewObject.GetComponent<Renderer>().material = originalShader;
-
         previewObject.GetComponent<IBuild>().BuildCost();
         // 미리보기 오브젝트의 위치에 실제 건물 생성
         GameObject newObject = Instantiate(buildingPrefab, previewObject.transform.position, previewObject.transform.rotation);
 
         newObject.layer = buildObjLayer;
-
-        previewObject.GetComponent<BoxCollider>().isTrigger = true;
-        previewObject.GetComponent<Renderer>().material = previewShader;
     }
+
+    
 }

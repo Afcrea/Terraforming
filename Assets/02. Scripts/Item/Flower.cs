@@ -49,7 +49,6 @@ public class Flower : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log("인터렉트 실행");
         if (isGathering)
         {
             //채집 코루틴 실행
