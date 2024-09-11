@@ -37,6 +37,11 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public StarterAssetsInputs playerInput = null;
 
+    // 프로그레스 바 가져오기
+    [HideInInspector]
+    public PickAxeUI pickaxeUI  = null;
+
+
     PlayerState playerState = null;
 
     private void Awake()
@@ -47,7 +52,7 @@ public class UIManager : MonoBehaviour
         // 가져온 모든 UI 순서대로 Init 해주기
         AllUIInit();
 
-        // esc, die, 행성 스탯 창은 기본으로 꺼져있게 하기
+        // esc, die, 행성 스탯 창은 기본으로 꺼져있게 하기 추가로 pickaxeUI 프로그레스 바도 끔
         OffSomeUI();
     }
 
@@ -76,6 +81,7 @@ public class UIManager : MonoBehaviour
         inventoryUI = GetComponentInChildren<InventoryUI>();
         buildUI = GetComponentInChildren<BuildUI>();
         backLobbyUI = GetComponentInChildren<BackLobbyUI>();
+        pickaxeUI = GetComponentInChildren<PickAxeUI>();
 
         planetManager = GameObject.FindGameObjectWithTag("PLANETMANAGER").GetComponent<PlanetManager>();
         playerInput = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<StarterAssetsInputs>();
@@ -99,7 +105,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    // Esc, Die, 행성 스탯 창 시작 시 꺼두기
+    // Esc, Die, 행성 스탯 창 시작 시 꺼두기  추가로 pickaxeUI 프로그레스 바도 끔
     #region Off Some UI
     private void OffSomeUI()
     {
@@ -108,6 +114,7 @@ public class UIManager : MonoBehaviour
         dieUI.easterEggUI.gameObject.SetActive(false);
         planetStateUI.gameObject.SetActive(false);
         backLobbyUI.gameObject.SetActive(false);
+        pickaxeUI.gameObject.SetActive(false);
     }
     #endregion
 
