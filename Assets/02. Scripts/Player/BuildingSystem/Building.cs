@@ -121,7 +121,6 @@ public class Building : MonoBehaviour
         {
             BuildObjectChange();
         }
-        //print(currIndex);
 
         if (previewObject)
         {
@@ -144,11 +143,7 @@ public class Building : MonoBehaviour
             }
 
             prevBuildEnable = buildEnable;
-            //Debug.Log(prevBuildEnable);
-            //Debug.Log(buildEnable);
         }
-
-        
     }
 
     // 건축 모드 시 프리뷰 오브젝트의 메테리얼을 변경하는 함수 현재 previewShader 가 적용됨
@@ -174,14 +169,6 @@ public class Building : MonoBehaviour
         originalShader = renderer.material;
         renderer.material = previewShader;
         BoxCollider box = previewObject.GetComponent<BoxCollider>();
-        //if(!box)
-        //{
-        //    previewObject.GetComponent<SphereCollider>().isTrigger = true;
-        //}
-        //else
-        //{
-        //    box.isTrigger = true;
-        //}
 
         box.isTrigger = true;
 

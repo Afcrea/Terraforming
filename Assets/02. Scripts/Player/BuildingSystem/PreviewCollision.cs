@@ -23,29 +23,6 @@ public class PreviewCollision : MonoBehaviour
         previewUnenableLayer = ~previewEnableLayer;
     }
 
-    //private void OnCollisionEnter(Collision other)
-    //{
-    //    if (other == null)
-    //    {
-    //        prewviewEnable = true;
-    //        return;
-    //    }
-
-    //    else
-    //    {
-    //        //Debug.Log(other);
-    //    }
-
-    //    if ((previewEnableLayer & (1 << other.gameObject.layer)) != 0)
-    //    {
-    //        prewviewEnable = true;
-    //    }
-    //    else if ((previewUnenableLayer & (1 << other.gameObject.layer)) != 0)
-    //    {
-    //        prewviewEnable = false;
-    //    }
-    //}
-
 
     private void OnTriggerExit(Collider other)
     {
@@ -55,18 +32,9 @@ public class PreviewCollision : MonoBehaviour
             return;
         }
 
-        else
-        {
-            //Debug.Log(other);
-        }
-
         if ((1 << buildObjLayer & (1 << other.gameObject.layer)) != 0)
         {
             prewviewEnable = true;
-        }
-        else if ((1 << buildObjLayer & (1 << other.gameObject.layer)) != 0)
-        {
-            prewviewEnable = false;
         }
     }
 
@@ -78,18 +46,12 @@ public class PreviewCollision : MonoBehaviour
             return;
         }
 
-        else
-        {
-            //Debug.Log(other);
-        }
+        prewviewEnable = true;
 
-        if ((previewEnableLayer & (1 << other.gameObject.layer)) != 0)
-        {
-            prewviewEnable = true;
-        }
-        else if ((previewUnenableLayer & (1 << other.gameObject.layer)) != 0)
+        if ((previewUnenableLayer & (1 << other.gameObject.layer)) != 0)
         {
             prewviewEnable = false;
         }
+        
     }
 }
