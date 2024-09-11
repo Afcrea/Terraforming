@@ -108,8 +108,6 @@ public class PickAxe : MonoBehaviour, IItem
 
             float holdTime = Time.time - holdStartTime;
 
-            print(holdTime);
-
             uiManager.pickaxeUI.barOn.barProgress = Mathf.Clamp(holdTime / holdDuration, 0, 1);
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

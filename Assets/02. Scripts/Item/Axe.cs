@@ -55,6 +55,20 @@ public class Axe : MonoBehaviour, IItem
         selector = FindObjectOfType<Selector>();
         holdItemUse = selector.inputActions.FindActionMap("ItemUse").FindAction("HoldingTime");
 
+
+        StartCoroutine(wait0()); // 간헐적으로 채집안되는게 초기화 문제인거 같아서 시간좀 주고 초기화함
+
+        // 각 키에 대해 콜백 등록
+        //holdItemUse.performed += AxePerformed;
+        //holdItemUse.canceled += AxeCanceled;
+        //holdItemUse.started += AxeStarted;
+
+        //holdItemUse.Enable();
+    }
+
+    IEnumerator wait0()
+    {
+        yield return new WaitForSeconds(0.1f);
         // 각 키에 대해 콜백 등록
         holdItemUse.performed += AxePerformed;
         holdItemUse.canceled += AxeCanceled;
@@ -106,8 +120,6 @@ public class Axe : MonoBehaviour, IItem
             uiManager.pickaxeUI.gameObject.SetActive(true);
 
             float holdTime = Time.time - holdStartTime;
-
-            print(holdTime);
 
             uiManager.pickaxeUI.barOn.barProgress = Mathf.Clamp(holdTime / holdDuration, 0, 1);
 
