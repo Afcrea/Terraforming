@@ -26,8 +26,10 @@ public class BuildUI : MonoBehaviour
     {
         texts = GetComponentsInChildren<Text>();
         texts[3].gameObject.SetActive(false);
+        texts[5].gameObject.SetActive(false);
         buttons = GetComponentsInChildren<Button>();
         buttons[1].gameObject.SetActive(false);
+        buttons[2].gameObject.SetActive(false);
 
         buildCostUI = GetComponentInChildren<BuildCostUI>();
         buildCostUIText = buildCostUI.GetComponent<Text>();
