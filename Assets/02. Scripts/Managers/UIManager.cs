@@ -41,8 +41,8 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public PickAxeUI pickaxeUI  = null;
 
-
     PlayerState playerState = null;
+    Selector selector = null;
 
     private void Awake()
     {
@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
         PlanetStateCheck();
         BackLobbyUI();
         PlayerDieUI();
+        SelectInventory(selector.selectedIndex);
     }
 
     // UIManager Init 메서드
@@ -85,7 +86,9 @@ public class UIManager : MonoBehaviour
 
         planetManager = GameObject.FindGameObjectWithTag("PLANETMANAGER").GetComponent<PlanetManager>();
         playerInput = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<StarterAssetsInputs>();
-        playerState = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<PlayerState>();
+        playerState = playerInput.gameObject.GetComponent<PlayerState>();
+        selector = playerInput.gameObject.GetComponent<Selector>();
+
     }
     #endregion
 
@@ -241,7 +244,9 @@ public class UIManager : MonoBehaviour
             buildUI.buildInvenGroup.gameObject.SetActive(true);
             buildUI.texts[1].text = "인벤토리";
             buildUI.texts[3].gameObject.SetActive(true);
+            buildUI.texts[5].gameObject.SetActive(true);
             buildUI.buttons[1].gameObject.SetActive(true);
+            buildUI.buttons[2].gameObject.SetActive(true);
             // 건설 시 소모 재화 표시 UI 켜기
             buildUI.buildCostUI.gameObject.SetActive(buildUI.isBuild);
             // 마우스 커서 활성화
@@ -255,7 +260,9 @@ public class UIManager : MonoBehaviour
             inventoryUI.gameObject.SetActive(true);
             buildUI.texts[1].text = "건설";
             buildUI.texts[3].gameObject.SetActive(false);
+            buildUI.texts[5].gameObject.SetActive(false);
             buildUI.buttons[1].gameObject.SetActive(false);
+            buildUI.buttons[2].gameObject.SetActive(false);
             // 건설 시 소모 재화 표시 UI 끄기
             buildUI.buildCostUI.gameObject.SetActive(buildUI.isBuild);
             // 마우스 커서 비활성화

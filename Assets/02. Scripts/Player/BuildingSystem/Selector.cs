@@ -103,7 +103,5 @@ public class Selector : MonoBehaviour
         _selectedIndex = index;
 
         pitem.idx = index;
-
-        uiManager.SelectInventory(index);
     }
 }
