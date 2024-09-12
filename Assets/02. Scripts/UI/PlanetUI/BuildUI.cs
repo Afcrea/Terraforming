@@ -17,12 +17,21 @@ public class BuildUI : MonoBehaviour
     [HideInInspector]
     public BuildInventoryGroup buildInvenGroup = null;
 
+    [HideInInspector]
+    public BuildCostUI buildCostUI = null;
+    [HideInInspector]
+    public Text buildCostUIText = null;
+
     public void BuildUIInit()
     {
         texts = GetComponentsInChildren<Text>();
         texts[3].gameObject.SetActive(false);
         buttons = GetComponentsInChildren<Button>();
         buttons[1].gameObject.SetActive(false);
+
+        buildCostUI = GetComponentInChildren<BuildCostUI>();
+        buildCostUIText = buildCostUI.GetComponent<Text>();
+        buildCostUI.gameObject.SetActive(false);
 
         buildInvenGroup = GetComponentInChildren<BuildInventoryGroup>();
         buildInvenGroup.BuildInventoryGroupInit();
