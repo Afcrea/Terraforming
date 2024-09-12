@@ -192,16 +192,12 @@ public class UIManager : MonoBehaviour
     {
         if (!buildUI.isBuild) // 건설 상태가 아닐 때
         {
-            // 건설 시 소모 재화 표시 UI 끄기
-            buildUI.buildCostUI.gameObject.SetActive(buildUI.isBuild);
             // 인벤 선택 UI를 _index의 위치로 보내기
             inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[_index].transform);
             inventoryUI.rect.position = inventoryUI.inventorys[_index].transform.position;
         }
         else // 건설 상태일 때
         {
-            // 건설 시 소모 재화 표시 UI 켜기
-            buildUI.buildCostUI.gameObject.SetActive(buildUI.isBuild);
             // 건축물 선택 UI를 _index의 위치로 보내기
             buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[_index].transform);
             buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[_index].transform.position;
@@ -246,6 +242,8 @@ public class UIManager : MonoBehaviour
             buildUI.texts[1].text = "인벤토리";
             buildUI.texts[3].gameObject.SetActive(true);
             buildUI.buttons[1].gameObject.SetActive(true);
+            // 건설 시 소모 재화 표시 UI 켜기
+            buildUI.buildCostUI.gameObject.SetActive(buildUI.isBuild);
             // 마우스 커서 활성화
             Cursor.lockState = CursorLockMode.None;
         }
@@ -258,6 +256,8 @@ public class UIManager : MonoBehaviour
             buildUI.texts[1].text = "건설";
             buildUI.texts[3].gameObject.SetActive(false);
             buildUI.buttons[1].gameObject.SetActive(false);
+            // 건설 시 소모 재화 표시 UI 끄기
+            buildUI.buildCostUI.gameObject.SetActive(buildUI.isBuild);
             // 마우스 커서 비활성화
             Cursor.lockState = CursorLockMode.Locked;
         }

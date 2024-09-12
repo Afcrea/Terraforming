@@ -5337,7 +5337,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "\uBCBD \uB3CC 10 / \uCCA0 10 \uD544\uC694"
 --- !u!222 &791617486
 CanvasRenderer:
   m_ObjectHideFlags: 0
