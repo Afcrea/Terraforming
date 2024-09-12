@@ -192,19 +192,19 @@ public class UIManager : MonoBehaviour
     {
         if (!buildUI.isBuild) // 건설 상태가 아닐 때
         {
+            // 건설 시 소모 재화 표시 UI 끄기
+            buildUI.buildCostUI.gameObject.SetActive(buildUI.isBuild);
             // 인벤 선택 UI를 _index의 위치로 보내기
             inventoryUI.selectInven.transform.SetParent(inventoryUI.inventorys[_index].transform);
             inventoryUI.rect.position = inventoryUI.inventorys[_index].transform.position;
-            // 건설 시 소모 재화 표시 UI 끄기
-            buildUI.buildCostUI.gameObject.SetActive(buildUI.isBuild);
         }
         else // 건설 상태일 때
         {
+            // 건설 시 소모 재화 표시 UI 켜기
+            buildUI.buildCostUI.gameObject.SetActive(buildUI.isBuild);
             // 건축물 선택 UI를 _index의 위치로 보내기
             buildUI.buildInvenGroup.selectBuildInven.transform.SetParent(buildUI.buildInvenGroup.buildInvens[_index].transform);
             buildUI.buildInvenGroup.rect.position = buildUI.buildInvenGroup.buildInvens[_index].transform.position;
-            // 건설 시 소모 재화 표시 UI 켜기
-            buildUI.buildCostUI.gameObject.SetActive(buildUI.isBuild);
             switch (_index) // 선택된 건축물(_index)에 따라 텍스트 매핑
             {
                 case 0:
