@@ -1803,7 +1803,7 @@ MonoBehaviour:
     \uC788\uB2E4.\n\uACFC\uAC70\uC5D0 \uBB3C\uC774 \uD758\uB800\uB358 \uD754\uC801\uC774
     \uC874\uC7AC\uD55C\uB2E4.\n\uB3CC\uACFC \uC2DD\uBB3C \uB4F1\uC758 \uC790\uC6D0\uC774
     \uB9CE\uC740 \uD3B8\uC774\uB2E4.\n\uCC98\uC74C \uC2DC\uC791\uD558\uAE30\uC5D0
-    \uC88B\uC744 \uAC83 \uAC19\uB2E4.\n"
+    \uC88B\uC744 \uAC83 \uAC19\uB2E4."
 --- !u!222 &1160301466
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2413,6 +2413,8 @@ GameObject:
   - component: {fileID: 1414689380}
   - component: {fileID: 1414689379}
   - component: {fileID: 1414689378}
+  - component: {fileID: 1414689382}
+  - component: {fileID: 1414689381}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2486,6 +2488,135 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1414689381
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414689377}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 139982ee37a243d40aab3b2b96b2c253, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1414689382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414689377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1439923624
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,7 +3788,7 @@ MonoBehaviour:
     \uBE44\uD574 \uB9E4\uC6B0  \uCD94\uC6B4 \uD3B8\uC774\uB2E4.\n\uD589\uC131 \uC628\uB3C4\uB294
     -70 \xBAC \uC815\uB3C4\uC774\uB2E4.\n\uB545\uC774 \uC624\uC5FC\uB418\uC5B4 \uC788\uB2E4.\n\uB3CC\uACFC
     \uC2DD\uBB3C \uB4F1\uC758 \uC790\uC6D0\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uB294\uB2E4.\n\uBB3C\uC774
-    \uC874\uC7AC\uD558\uB098 \uC624\uBA85\uB418\uC5B4 \uC788\uB2E4.\n\uC790\uC6D0\uC774
+    \uC874\uC7AC\uD558\uB098 \uC624\uC5FC\uB418\uC5B4 \uC788\uB2E4.\n\uC790\uC6D0\uC774
     \uC5B4\uB290\uC815\uB3C4 \uBAA8\uC778 \uB4A4\uC5D0 \uAC00\uB294 \uAC83\uC774
     \uC88B\uC744 \uAC83 \uAC19\uB2E4."
 --- !u!222 &1946472509
