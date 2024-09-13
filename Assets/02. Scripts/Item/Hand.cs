@@ -6,6 +6,8 @@ public class Hand : MonoBehaviour, IItem
 {
     public Sprite inventoryImageSource;
 
+    int buildObjLayer;
+
     GameObject prefab;
 
     public void GetItem()
@@ -20,7 +22,12 @@ public class Hand : MonoBehaviour, IItem
 
     public void UseItem(int i)
     {
-        // 사용없음
+        buildObjLayer = LayerMask.NameToLayer("BUILDOBJ");
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hitinfo, 10f, 1 << buildObjLayer))
+        {
+            hitinfo.transform.gameObject.GetComponent<IInteractable>()?.Interact();
+        }
     }
 
     // Start is called before the first frame update
